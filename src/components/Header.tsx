@@ -11,11 +11,20 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { useAuthStore } from '@/store/authStore'
 import { LogOutIcon, MailIcon, ShieldCheckIcon, UserIcon } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import LanguageSwitcher from './common/LanguageSwitcher'
 import { Button } from './ui/button'
 
 const Header = () => {
+	const navigate = useNavigate()
+	const logout = useAuthStore(state => state.logout)
+
+	const handleLogout = async () => {
+		await logout()
+		navigate('/login', { replace: true })
+	}
 	return (
 		<header className='flex items-center justify-between px-6 py-3 bg-[#FFFFFF]'>
 			{/* left items */}
@@ -69,7 +78,7 @@ const Header = () => {
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem>
+						<DropdownMenuItem onClick={handleLogout}>
 							<LogOutIcon />
 							Chiqish
 						</DropdownMenuItem>

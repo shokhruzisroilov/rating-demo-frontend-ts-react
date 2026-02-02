@@ -29,7 +29,7 @@ const LabeledInputWithInfo: FC<LabeledInputWithInfoProps> = ({
 				onChange={onChange}
 				placeholder={placeholder}
 				type={type}
-				className='bg-[#F4F6FC]'
+				className='h-12.5 rounded-xl bg-[#F4F6FC]'
 			/>
 		</div>
 	)
