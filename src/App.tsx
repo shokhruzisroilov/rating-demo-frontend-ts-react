@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import Layout from './components/Layout'
 import ProtectedRoute from './components/ProtectedRoute'
 import { Home, Login, NotFound } from './pages'
+import CalculationResult from './pages/CalculationResult'
 
 function App() {
 	const queryClient = new QueryClient()
@@ -16,6 +17,10 @@ function App() {
 					<Route element={<ProtectedRoute />}>
 						<Route path='/' element={<Layout />}>
 							<Route index element={<Home />} />
+							<Route
+								path='calculation/:universityId/:periodId'
+								element={<CalculationResult />}
+							/>
 						</Route>
 					</Route>
 
