@@ -55,10 +55,10 @@ export const professorTeacherSchema = z
 		sumY: z.coerce.number(),
 	})
 	.superRefine((data, ctx) => {
-		if (data.t2 + data.t3 > data.t1) {
+		if (data.t2 + data.t3 > data.tp) {
 			ctx.addIssue({
-				path: ['t1'],
-				message: 't2 va t3 yig‘indisi t1 dan katta bo‘lishi mumkin emas',
+				path: ['tp'],
+				message: "T2 (DSc/professor soni) va T3 (PhD/dotsent soni) yig'indisi TP (asosiy shtat P-O soni) dan oshmasligi kerak",
 				code: z.ZodIssueCode.custom,
 			})
 		}
