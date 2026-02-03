@@ -29,6 +29,7 @@ const ProfessorTeacherForm: React.FC<ProfessorTeacherFormProps> = ({
 		register,
 		handleSubmit,
 		formState: { errors },
+		reset
 	} = useForm<ProfessorTeacherFormData>({
 		resolver: zodResolver(professorTeacherSchema as any),
 		defaultValues: {
@@ -58,6 +59,7 @@ const ProfessorTeacherForm: React.FC<ProfessorTeacherFormProps> = ({
 			toast.success(
 				"Professor-o'qituvchilar ma'lumotlari muvaffaqiyatli yuborildi!",
 			)
+			reset()
 			if (onSuccess) {
 				onSuccess()
 			}

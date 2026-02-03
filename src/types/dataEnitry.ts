@@ -15,6 +15,8 @@ export const scientificActivitySchema = z.object({
 	a9: z.coerce.number(),
 	a10: z.coerce.number(),
 	a11: z.coerce.number(),
+	a11_1: z.coerce.number(),
+	a11_2: z.coerce.number(),
 	a12: z.coerce.number(),
 	a13: z.coerce.number(),
 	a14: z.coerce.number(),
@@ -106,6 +108,8 @@ export interface InternationalActivityResponse extends InternationalActivityForm
 export const graduateEmploymentSchema = z.object({
 	universityId: z.coerce.number(),
 	periodId: z.coerce.number(),
+	b1: z.coerce.number(),
+	b2: z.coerce.number(),
 	b3: z.coerce.number(),
 	b4: z.coerce.number(),
 	b5: z.coerce.number(),

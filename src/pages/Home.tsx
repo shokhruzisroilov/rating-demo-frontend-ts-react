@@ -237,11 +237,7 @@ const Home = () => {
 								key={tab.value}
 								onClick={() => handleStepClick(index)}
 								className={`bg-white border-2 transition rounded-2xl ${
-									isActive
-										? 'border-blue-600'
-										: isCompleted
-											? 'border-green-500'
-											: 'border-transparent'
+									isActive ? 'border-blue-600' : 'border-transparent'
 								} ${
 									isClickable
 										? 'cursor-pointer hover:shadow-md'
@@ -265,7 +261,7 @@ const Home = () => {
 										<p className='text-sm text-[#697696] mt-1.5'>{tab.desc}</p>
 									</div>
 									<div
-										className={`${isActive ? 'text-[#4778F5]' : isCompleted ? 'text-green-500' : 'text-[#282F3D]'}`}
+										className={`${isActive ? 'text-[#4778F5]' : 'text-[#282F3D]'}`}
 									>
 										{tab.icon}
 									</div>

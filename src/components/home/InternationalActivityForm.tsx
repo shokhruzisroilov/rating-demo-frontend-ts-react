@@ -29,6 +29,7 @@ const InternationalActivityForm: React.FC<InternationalActivityFormProps> = ({
 		register,
 		handleSubmit,
 		formState: { errors },
+		reset,
 	} = useForm<InternationalActivityFormData>({
 		resolver: zodResolver(internationalActivitySchema as any),
 		defaultValues: {
@@ -55,6 +56,7 @@ const InternationalActivityForm: React.FC<InternationalActivityFormProps> = ({
 		try {
 			await mutateAsync(formData)
 			toast.success("Xalqaro faoliyat ma'lumotlari muvaffaqiyatli yuborildi!")
+			reset()
 			if (onSuccess) {
 				onSuccess()
 			}

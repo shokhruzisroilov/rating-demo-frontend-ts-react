@@ -29,6 +29,7 @@ const ScientificActivityForm: React.FC<ScientificActivityFormProps> = ({
 		register,
 		handleSubmit,
 		formState: { errors },
+		reset,
 	} = useForm<ScientificActivityFormData>({
 		resolver: zodResolver(scientificActivitySchema as any),
 		defaultValues: {
@@ -45,6 +46,8 @@ const ScientificActivityForm: React.FC<ScientificActivityFormProps> = ({
 			a9: 0,
 			a10: 0,
 			a11: 0,
+			a11_1: 0,
+			a11_2: 0,
 			a12: 0,
 			a13: 0,
 			a14: 0,
@@ -57,6 +60,7 @@ const ScientificActivityForm: React.FC<ScientificActivityFormProps> = ({
 		try {
 			await mutateAsync(formData)
 			toast.success("Ilmiy faoliyat ma'lumotlari muffaqiyatli yuborildi!")
+			reset()
 			if (onSuccess) {
 				onSuccess()
 			}
@@ -146,6 +150,18 @@ const ScientificActivityForm: React.FC<ScientificActivityFormProps> = ({
 							type='number'
 							{...register('a11')}
 							error={errors.a11?.message}
+						/>
+						<LabeledInputWithInfo
+							label='А11_1 - Ilm-fan va innovatsiyani rivojlantirishga yo‘naltirilgan mablag‘lar'
+							type='number'
+							{...register('a11_1')}
+							error={errors.a11_1?.message}
+						/>
+						<LabeledInputWithInfo
+							label="А11_2 - Taqdim etilgan Spin-off korxonalarning yillik daromadi (mln.so'm)"
+							type='number'
+							{...register('a11_2')}
+							error={errors.a11_2?.message}
 						/>
 						<LabeledInputWithInfo
 							label='A12 – xorijiy va xalqaro tashkilotlardan tushgan mablagʻlar'

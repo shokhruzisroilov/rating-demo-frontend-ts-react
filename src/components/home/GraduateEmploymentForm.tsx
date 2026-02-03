@@ -29,11 +29,14 @@ const GraduateEmploymentForm: React.FC<GraduateEmploymentFormProps> = ({
 		register,
 		handleSubmit,
 		formState: { errors },
+		reset,
 	} = useForm<GraduateEmploymentFormData>({
 		resolver: zodResolver(graduateEmploymentSchema as any),
 		defaultValues: {
 			universityId,
 			periodId,
+			b1: 0,
+			b2: 0,
 			b3: 0,
 			b4: 0,
 			b5: 0,
@@ -49,6 +52,7 @@ const GraduateEmploymentForm: React.FC<GraduateEmploymentFormProps> = ({
 			toast.success(
 				"Bitiruvchilar bandligi ma'lumotlari muvaffaqiyatli yuborildi!",
 			)
+			reset()
 			if (onSuccess) {
 				onSuccess()
 			}
@@ -75,6 +79,18 @@ const GraduateEmploymentForm: React.FC<GraduateEmploymentFormProps> = ({
 						description='Bitiruvchilarning ish bilan bandlik darajasi va korxonalar bilan hamkorlik.'
 					/>
 					<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+						<LabeledInputWithInfo
+							label='B1 – Yakka tartibdagi tadbirkor yoki ta’sischi sifatida faoliyat ko‘rsatayotgan, davlat organi yoki xo‘jalik yurituvchi subyektda ishlayotgan bitiruvchilar soni'
+							type='number'
+							{...register('b1')}
+							error={errors.b1?.message}
+						/>
+						<LabeledInputWithInfo
+							label='B2 – Ta’limning keyingi bosqichi bilan qamrab olingan, ikki yoshgacha bola parvarishi bilan band, 1-2 guruh nogironi, o‘zini o‘zi band qilgan bitiruvchilar soni'
+							type='number'
+							{...register('b2')}
+							error={errors.b2?.message}
+						/>
 						<LabeledInputWithInfo
 							label='B3 – bitirgandan soʻng 3 oy ichida ishga joylashgan bitiruvchilar soni'
 							type='number'

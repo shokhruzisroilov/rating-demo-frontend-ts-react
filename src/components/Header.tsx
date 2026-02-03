@@ -20,6 +20,7 @@ import { Button } from './ui/button'
 const Header = () => {
 	const navigate = useNavigate()
 	const logout = useAuthStore(state => state.logout)
+	const user = useAuthStore(state => state.user)
 
 	const handleLogout = async () => {
 		await logout()
@@ -66,15 +67,15 @@ const Header = () => {
 						<DropdownMenuGroup>
 							<DropdownMenuItem>
 								<UserIcon />
-								To'liq ism
+								Ism: {user && user.fullName}
 							</DropdownMenuItem>
 							<DropdownMenuItem>
 								<MailIcon />
-								Email
+								Email: {user && user.email}
 							</DropdownMenuItem>
 							<DropdownMenuItem>
 								<ShieldCheckIcon />
-								Rol
+								Role: {user && user.role}
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
