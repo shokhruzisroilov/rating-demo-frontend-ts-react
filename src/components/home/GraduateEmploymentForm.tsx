@@ -76,37 +76,37 @@ const GraduateEmploymentForm: React.FC<GraduateEmploymentFormProps> = ({
 					/>
 					<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
 						<LabeledInputWithInfo
-							label='B3 – Iqtisodiyotning real sektorida, davlat organlarida va jamoat tashkilotlarida band boʻlgan bitiruvchilar ulushi (%)'
+							label='B3 – bitirgandan soʻng 3 oy ichida ishga joylashgan bitiruvchilar soni'
 							type='number'
 							{...register('b3')}
 							error={errors.b3?.message}
 						/>
 						<LabeledInputWithInfo
-							label='B4 – Bitiruvchilarning taʼlim yoʻnalishi boʻyicha band boʻlgan bitiruvchilar ulushi (%)'
+							label='B4 – bitirgandan soʻng 6 oy ichida ishga joylashgan bitiruvchilar soni'
 							type='number'
 							{...register('b4')}
 							error={errors.b4?.message}
 						/>
 						<LabeledInputWithInfo
-							label='B5 – Davlat organlarida hamda oʻz oʻrnida band boʻlgan bitiruvchilar ulushi (%)'
+							label='B5 – bitirgandan soʻng 12 oy ichida ishga joylashgan bitiruvchilar soni'
 							type='number'
 							{...register('b5')}
 							error={errors.b5?.message}
 						/>
 						<LabeledInputWithInfo
-							label='TB – Oʻz kasb-hunariga ega boʻlgan korxona va tashkilotlar bilan shartnomalar soni'
+							label='ТB – bitiruvchilar soni'
 							type='number'
 							{...register('tb')}
 							error={errors.tb?.message}
 						/>
 						<LabeledInputWithInfo
-							label='Yort – Malakaviy amaliyot oʻtashga tashrif buyurishlar soni'
+							label='Yoʻrt – ishga joylashgan bitiruvchilarning oʻrtacha oylik daromadi (ish haqi)'
 							type='number'
 							{...register('yort')}
 							error={errors.yort?.message}
 						/>
 						<LabeledInputWithInfo
-							label='Yref – Tashrif buyurishga ishonchli hujjatlar soni'
+							label="Yref – Milliy statistika qo'mitasi ma'lumotlariga ko'ra, O‘zbekiston Respublikasida o‘rtacha oylik nominal hisoblangan ish haqi"
 							type='number'
 							{...register('yref')}
 							error={errors.yref?.message}

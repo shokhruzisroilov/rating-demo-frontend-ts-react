@@ -5,6 +5,77 @@ const CalculationResult = () => {
 	const { universityId, periodId } = useParams()
 	const navigate = useNavigate()
 
+	const INDICATORS = [
+		{
+			key: 'indicator1',
+			title: 'Ilmiy daraja (unvon)ga ega professor-o‘qituvchilar ulushi (%)',
+		},
+		{
+			key: 'indicator2',
+			title: 'Ilmiy darajaga ega professor-o‘qituvchilarning o‘rtacha yoshi',
+		},
+		{
+			key: 'indicator3',
+			title: 'Xorijiy OTMlarda olingan ilmiy darajaga ega P-O ulushi (%)',
+		},
+		{
+			key: 'indicator4',
+			title: 'Ta’lim va ilmiy jarayonga jalb qilingan xorijiy P-O ulushi (%)',
+		},
+		{
+			key: 'indicator5',
+			title: 'Professor-o‘qituvchilar sonining talabalar soniga nisbati',
+		},
+		{
+			key: 'indicator6',
+			title: 'Scopus jurnallarida nashr etilgan maqolalar',
+		},
+		{
+			key: 'indicator7',
+			title: 'Xalqaro ma’lumotlar bazalarida iqtiboslik ko‘rsatkichi',
+		},
+		{
+			key: 'indicator8',
+			title: 'Professor-o‘qituvchilarning h-index medianasi',
+		},
+		{
+			key: 'indicator9',
+			title: 'Patentlar ulushi',
+		},
+		{
+			key: 'indicator10',
+			title: 'Scopus’da qayd etilgan patentlar',
+		},
+		{
+			key: 'indicator11',
+			title: 'Jalb etilgan mablag‘lar',
+		},
+		{
+			key: 'indicator12',
+			title: 'Oliy ta’limdan keyingi ta’lim samaradorligi',
+		},
+		{
+			key: 'indicator13',
+			title: 'Xorijiy davlat fuqarosi bo‘lgan talabalar ulushi (%)',
+		},
+		{
+			key: 'indicator14',
+			title: 'Talabalarning xalqaro akademik mobilligi (%)',
+		},
+		{
+			key: 'indicator15',
+			title: 'Professor-o‘qituvchilarning xalqaro akademik mobilligi (%)',
+		},
+		{
+			key: 'indicator16',
+			title: 'Xorijiy OTMlar bilan qo‘shma ta’lim dasturlari samaradorligi (%)',
+		},
+		{
+			key: 'indicator17',
+			title: 'Bitiruvchilarning ishga joylashish samaradorligi (%)',
+		},
+	]
+
 	const { data, isLoading, isError } = useCalculationQuery(
 		Number(universityId),
 		Number(periodId),
@@ -94,28 +165,27 @@ const CalculationResult = () => {
 									Ko'rsatkichlar
 								</h3>
 								<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3'>
-									{Array.from({ length: 17 }).map((_, i) => {
-										const indicatorKey =
-											`indicator${i + 1}` as keyof typeof data
-										const indicatorValue = data[indicatorKey] as
+									{INDICATORS.map((indicator, index) => {
+										const value = data[indicator.key as keyof typeof data] as
 											| number
 											| undefined
 
 										return (
 											<div
-												key={i}
+												key={indicator.key}
 												className='bg-linear-to-br from-gray-50 to-white border border-gray-100 p-4 rounded-xl hover:shadow-sm transition-shadow'
 											>
-												<div className='flex items-center justify-between mb-2'>
-													<span className='text-sm font-medium text-gray-500'>
-														Ko'rsatkich {i + 1}
+												<div className='flex items-start justify-between mb-2 gap-2'>
+													<span className='text-sm font-medium text-gray-600'>
+														{indicator.title}
 													</span>
-													<span className='text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full'>
-														#{i + 1}
+													<span className='text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full whitespace-nowrap'>
+														#{index + 1}
 													</span>
 												</div>
+
 												<div className='text-2xl font-bold text-gray-800'>
-													{indicatorValue?.toFixed(1) ?? '0.0'}
+													{value?.toFixed(1) ?? '0.0'}
 												</div>
 											</div>
 										)
@@ -126,7 +196,7 @@ const CalculationResult = () => {
 							{/* Summary cards */}
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
 								{/* Composite Score */}
-								<div className='bg-linear-to-br from-blue-50 to-blue-100 border border-blue-200 p-5 rounded-xl'>
+								{/* <div className='bg-linear-to-br from-blue-50 to-blue-100 border border-blue-200 p-5 rounded-xl'>
 									<div className='flex items-center gap-3 mb-3'>
 										<div className='w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center'>
 											<svg
@@ -153,10 +223,10 @@ const CalculationResult = () => {
 									<p className='text-sm text-gray-600 mt-2'>
 										Umumiy hisoblangan ball
 									</p>
-								</div>
+								</div> */}
 
 								{/* Rank */}
-								<div className='bg-linear-to-br from-purple-50 to-purple-100 border border-purple-200 p-5 rounded-xl'>
+								{/* <div className='bg-linear-to-br from-purple-50 to-purple-100 border border-purple-200 p-5 rounded-xl'>
 									<div className='flex items-center gap-3 mb-3'>
 										<div className='w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center'>
 											<svg
@@ -183,7 +253,7 @@ const CalculationResult = () => {
 									<p className='text-sm text-gray-600 mt-2'>
 										Umumiy reytingdagi o'rni
 									</p>
-								</div>
+								</div> */}
 							</div>
 						</div>
 					</div>

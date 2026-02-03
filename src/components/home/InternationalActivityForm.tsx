@@ -80,85 +80,85 @@ const InternationalActivityForm: React.FC<InternationalActivityFormProps> = ({
 					/>
 					<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
 						<LabeledInputWithInfo
-							label='X1 – xalqaro ekspertlarning OTMni boshqa OTMlar orasida oʻrni (Reitingdagi oʻrni)'
+							label='X1 – Jahon bankining Yuqori daromadli iqtisodiyotga ega rivojlangan mamlakatlar ro‘yxatiga kirgan davlatlar talabalari'
 							type='number'
 							{...register('x1')}
 							error={errors.x1?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X2 – Chet el oliy taʼlim muassasalari bilan hamkorlik shartnomalari soni'
+							label='X2 – Markaziy Osiyo davlatlari talabalari'
 							type='number'
 							{...register('x2')}
 							error={errors.x2?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X3 – Ikki tomonlama oʻqituvchi va talaba almashinuv dasturlari boʻyicha oʻquv yili davomida almashilgan professor-oʻqituvchilar soni'
+							label='X3 – boshqa davlatlar talabalari'
 							type='number'
 							{...register('x3')}
 							error={errors.x3?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X4 – Ikki tomonlama oʻqituvchi va talaba almashinuv dasturlari boʻyicha oʻquv yili davomida almashilgan talabalar soni'
+							label='X4 – “TOP-100” xorijiy oliy taʼlim tashkiloti bilan almashinuv dasturida (outbound, inbound) oflayn ishtirok etgan talabalari soni'
 							type='number'
 							{...register('x4')}
 							error={errors.x4?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X5 – Chet ellik professor-oʻqituvchilar soni'
+							label='X5 – “TOP-300” xorijiy oliy taʼlim tashkiloti bilan almashinuv dasturida (outbound, inbound) oflayn ishtirok etgan talabalari soni'
 							type='number'
 							{...register('x5')}
 							error={errors.x5?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X6 – Chet ellik talabalar soni'
+							label='X6 – “TOP-500” xorijiy oliy taʼlim tashkiloti bilan almashinuv dasturida (outbound, inbound) oflayn ishtirok etgan talabalari soni'
 							type='number'
 							{...register('x6')}
 							error={errors.x6?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X7 – Xalqaro akademik dasturlar (CISCO, MICROSOFT, SIEMENS, TESLA, IBM) soni'
+							label='X7 – xorijiy oliy taʼlim tashkiloti bilan almashinuv dasturida (outbound, inbound) oflayn ishtirok etgan talabalari soni'
 							type='number'
 							{...register('x7')}
 							error={errors.x7?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X8 – Xalqaro sertifikatlashtirish dasturlari boʻyicha sertifikat olgan professor-oʻqituvchilar soni'
+							label='X8 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi almashinuv dasturining chiqish (outbound) qismida ishtirok etuvchi professor-oʻqituvchilar soni'
 							type='number'
 							{...register('x8')}
 							error={errors.x8?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X9 – Xalqaro sertifikatlashtirish dasturlari boʻyicha sertifikat olgan talabalar soni'
+							label='X9 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi almashinuv dasturining kirish (inbound) qismida ishtirok etuvchi xorijiy oliy ta’lim tashkilot professor-oʻqituvchisi soni'
 							type='number'
 							{...register('x9')}
 							error={errors.x9?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X10 – Xalqaro hamkorlik asosida oʻtkazilgan ilmiy anjumanlar, seminarlar soni'
+							label='X10 – “TOP-100” xorijiy oliy taʼlim tashkiloti bilan tashkil etilgan qoʻshma taʼlim dasturlarda tahsil olayotgan talabalari soni'
 							type='number'
 							{...register('x10')}
 							error={errors.x10?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X11 – Xalqaro hamkorlik asosida chop etilgan ilmiy jurnallar soni'
+							label='X11 – “TOP-300” xorijiy oliy taʼlim tashkiloti bilan tashkil etilgan qoʻshma taʼlim dasturlarda tahsil olayotgan talabalari soni'
 							type='number'
 							{...register('x11')}
 							error={errors.x11?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X12 – Xalqaro grantlar va loyihalar boʻyicha olingan mablagʻ (AQSh dollarida)'
+							label='X12 – “TOP-500” xorijiy oliy taʼlim tashkiloti bilan tashkil etilgan qoʻshma taʼlim dasturlarda tahsil olayotgan talabalari soni'
 							type='number'
 							{...register('x12')}
 							error={errors.x12?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X13 – Xalqaro tashkilotlarning OTMga qoʻshgan hissasi (AQSh dollarida)'
+							label='X13 – “TOP-1000” xorijiy oliy taʼlim tashkiloti bilan tashkil etilgan qoʻshma taʼlim dasturlarda tahsil olayotgan talabalari soni'
 							type='number'
 							{...register('x13')}
 							error={errors.x13?.message}
 						/>
 						<LabeledInputWithInfo
-							label='X14 – Chet ellik ekspertlar ishtirokida oʻtkazilgan malaka oshirish kurslari soni'
+							label='X14 – “TOP-1000” ro‘yxatiga kirmaydigan xorijiy oliy taʼlim tashkiloti bilan tashkil etilgan qoʻshma taʼlim dasturlarda tahsil olayotgan talabalari soni'
 							type='number'
 							{...register('x14')}
 							error={errors.x14?.message}

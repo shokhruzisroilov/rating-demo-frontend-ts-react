@@ -82,55 +82,55 @@ const ScientificActivityForm: React.FC<ScientificActivityFormProps> = ({
 					/>
 					<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
 						<LabeledInputWithInfo
-							label='A1 – iqtiboslik bo‘yicha eng nufuzli (Top 1%) jurnallardagi maqolalar soni'
+							label='А1 – iqtiboslik soni bo‘yicha eng nufuzli (Top 1% most cited papers) jurnallarda qayd etilgan maqolalar soni'
 							type='number'
 							{...register('a1')}
 							error={errors.a1?.message}
 						/>
 						<LabeledInputWithInfo
-							label='A2 – iqtiboslik bo‘yicha eng nufuzli (Top 10%) jurnallardagi maqolalar soni'
+							label='А2 – iqtiboslik soni bo‘yicha eng nufuzli (Top 10% most cited papers) jurnallarda qayd etilgan maqolalar soni'
 							type='number'
 							{...register('a2')}
 							error={errors.a2?.message}
 						/>
 						<LabeledInputWithInfo
-							label='A3 – Q1 kvartildagi jurnallarda chop etilgan maqolalar soni'
+							label='А3 – Q1 kvartilda qayd etilgan jurnallarda chop etilgan maqolalar soni'
 							type='number'
 							{...register('a3')}
 							error={errors.a3?.message}
 						/>
 						<LabeledInputWithInfo
-							label='A4 – Q2 kvartildagi jurnallarda chop etilgan maqolalar soni'
+							label='А4 – Q2 kvartilda qayd etilgan jurnallarda chop etilgan maqolalar soni'
 							type='number'
 							{...register('a4')}
 							error={errors.a4?.message}
 						/>
 						<LabeledInputWithInfo
-							label='A5 – Q3 kvartildagi jurnallarda chop etilgan maqolalar soni'
+							label='А5 – Q3 kvartilda qayd etilgan jurnallarda chop etilgan maqolalar soni'
 							type='number'
 							{...register('a5')}
 							error={errors.a5?.message}
 						/>
 						<LabeledInputWithInfo
-							label='A6 – Q4 kvartildagi jurnallarda chop etilgan maqolalar soni'
+							label='А6 – Q4 kvartilda qayd etilgan jurnallarda chop etilgan maqolalar soni'
 							type='number'
 							{...register('a6')}
 							error={errors.a6?.message}
 						/>
 						<LabeledInputWithInfo
-							label='A7 – Web of Science bo‘yicha OTM affiliatsiyasidan kelib chiqqan iqtiboslar soni'
+							label='A7 – Web of Science maʼlumotlar bazasida oliy taʼlim tashkiloti affiliatsiya manzili boʻyicha aniqlangan iqtiboslar soni'
 							type='number'
 							{...register('a7')}
 							error={errors.a7?.message}
 						/>
 						<LabeledInputWithInfo
-							label='A8 – Scopus bo‘yicha OTM affiliatsiyasidan kelib chiqqan iqtiboslar soni'
+							label='A8 – Scopus maʼlumotlar bazasida oliy taʼlim tashkiloti affiliatsiya manzili boʻyicha aniqlangan iqtiboslar soni'
 							type='number'
 							{...register('a8')}
 							error={errors.a8?.message}
 						/>
 						<LabeledInputWithInfo
-							label='A9 – professor-o‘qituvchilar tomonidan olingan patentlar soni'
+							label='A9 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi professor-o‘qituvchilar tomonidan ixtiro, foydali model, sanoat namunalari va seleksiya yutuqlari uchun olingan patentlar soni'
 							type='number'
 							{...register('a9')}
 							error={errors.a9?.message}
@@ -142,37 +142,37 @@ const ScientificActivityForm: React.FC<ScientificActivityFormProps> = ({
 							error={errors.a10?.message}
 						/>
 						<LabeledInputWithInfo
-							label='A11 – Scopus maʼlumotlar bazasida OTM affiliatsiyasi bo‘yicha qayd etilgan patentlar soni'
+							label='А11 – Scopus maʼlumotlar bazasida oliy taʼlim tashkiloti affiliatsiyasi  boʻyicha ko‘rsatilgan patentlar soni'
 							type='number'
 							{...register('a11')}
 							error={errors.a11?.message}
 						/>
 						<LabeledInputWithInfo
-							label='A12 – xorijiy va xalqaro tashkilotlardan tushgan ilmiy mablag‘ (so‘m)'
+							label='A12 – xorijiy va xalqaro tashkilotlardan tushgan mablagʻlar'
 							type='number'
 							{...register('a12')}
 							error={errors.a12?.message}
 						/>
 						<LabeledInputWithInfo
-							label='A13 – davlat ilmiy loyihalaridan tushgan ilmiy mablag‘ (so‘m)'
+							label='A13 – davlat ilmiy loyihalari doirasidagi tadqiqotlardan tushgan mablagʻlar'
 							type='number'
 							{...register('a13')}
 							error={errors.a13?.message}
 						/>
 						<LabeledInputWithInfo
-							label='A14 – xo‘jalik yurituvchi subyektlar buyurtmalari asosida olingan mablag‘ (so‘m)'
+							label='A14 – xo‘jalik yurituvchi subyektlar buyurtmalari asosida olingan mablagʻlar'
 							type='number'
 							{...register('a14')}
 							error={errors.a14?.message}
 						/>
 						<LabeledInputWithInfo
-							label='Hi – professor-o‘qituvchilarning Scopus bo‘yicha individual h-index ko‘rsatkichi'
+							label='Hi – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi professor-o‘qituvchilarning Scopus maʼlumotlar bazasida qayd etilgan individual “Xirsh” indeksi (h-index)'
 							type='number'
 							{...register('hasHindexesEmployees')}
 							error={errors.hasHindexesEmployees?.message}
 						/>
 						<LabeledInputWithInfo
-							label='Med(Hi) – professor-o‘qituvchilarning Scopus bo‘yicha h-index medianasi'
+							label='Med (Hi) – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi professor-o‘qituvchilarning Scopus maʼlumotlar bazasida qayd etilgan individual “Xirsh” indeksi (h-index)ning medianasi'
 							type='number'
 							{...register('medHi')}
 							error={errors.medHi?.message}

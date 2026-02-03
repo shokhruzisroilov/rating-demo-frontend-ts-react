@@ -44,8 +44,8 @@ const ProfessorTeacherForm: React.FC<ProfessorTeacherFormProps> = ({
 			t8: 0,
 			t9: 0,
 			t10: 0,
-			tp: 0,
-			tt: 0,
+			tp: 1,
+			tt: 1,
 			tid: 0,
 			hs: 0,
 			sumY: 0,
@@ -85,91 +85,91 @@ const ProfessorTeacherForm: React.FC<ProfessorTeacherFormProps> = ({
 					/>
 					<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
 						<LabeledInputWithInfo
-							label='T1 – professor-oʻqituvchilarning soni'
+							label='T1 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi akademiklar soni'
 							type='number'
 							{...register('t1')}
 							error={errors.t1?.message}
 						/>
 						<LabeledInputWithInfo
-							label='T2 – PhD, DSc va tenglashtirilgan darajaga ega boʻlgan professor-oʻqituvchilar soni'
+							label='T2 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi DSc (fan doktori) ilmiy daraja yoki professor unvoniga ega professor-oʻqituvchilar soni'
 							type='number'
 							{...register('t2')}
 							error={errors.t2?.message}
 						/>
 						<LabeledInputWithInfo
-							label='T3 – PhD yoki DSc dissertatsiyasi himoya qilgan professor-oʻqituvchilar soni'
+							label='T3 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi PhD (fan nomzodi) ilmiy daraja yoki dotsent unvoniga ega professor-oʻqituvchilar soni'
 							type='number'
 							{...register('t3')}
 							error={errors.t3?.message}
 						/>
 						<LabeledInputWithInfo
-							label='T4 – professor darajasiga ega professor-oʻqituvchilar soni'
+							label='T4 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi “TOP-100” xorijiy oliy taʼlim tashkilotidan olingan ilmiy darajaga (unvon) ega professor-oʻqituvchilar soni'
 							type='number'
 							{...register('t4')}
 							error={errors.t4?.message}
 						/>
 						<LabeledInputWithInfo
-							label='T5 – dotsent darajasiga ega professor-oʻqituvchilar soni'
+							label='T5 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi “TOP-300” xorijiy oliy taʼlim tashkilotidan olingan ilmiy darajaga (unvon) ega professor-oʻqituvchilar soni'
 							type='number'
 							{...register('t5')}
 							error={errors.t5?.message}
 						/>
 						<LabeledInputWithInfo
-							label='T6 – magistr darajasiga ega professor-oʻqituvchilar soni'
+							label='T6 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi “TOP-500” xorijiy oliy taʼlim tashkilotidan olingan ilmiy darajaga (unvon) ega professor-oʻqituvchilar soni'
 							type='number'
 							{...register('t6')}
 							error={errors.t6?.message}
 						/>
 						<LabeledInputWithInfo
-							label='T7 – xorijiy ilmiy darajaga ega professor-oʻqituvchilar soni'
+							label='T7 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi “TOP-1 000” xorijiy oliy taʼlim tashkilotidan olingan ilmiy darajaga (unvon) ega professor-oʻqituvchilar soni'
 							type='number'
 							{...register('t7')}
 							error={errors.t7?.message}
 						/>
 						<LabeledInputWithInfo
-							label='T8 – chet tillarini biladigan professor-oʻqituvchilar soni'
+							label='T8 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi “TOP-300” xorijiy oliy taʼlim tashkilotidan olingan magistratura diplomiga ega professor-oʻqituvchilar soni'
 							type='number'
 							{...register('t8')}
 							error={errors.t8?.message}
 						/>
 						<LabeledInputWithInfo
-							label='T9 – xalqaro maʼlumotlar bazalarida profili mavjud professor-oʻqituvchilar soni'
+							label='T9 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi Jahon bankining Yuqori daromadli iqtisodiyotga ega rivojlangan mamlakatlar ro‘yxatiga kirgan chet ellik professor-oʻqituvchilar soni'
 							type='number'
 							{...register('t9')}
 							error={errors.t9?.message}
 						/>
 						<LabeledInputWithInfo
-							label='T10 – Xorijiy OTMlarda malaka oshirgan professor-oʻqituvchilar soni'
+							label='T10 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi “TOP-500” xorijiy oliy taʼlim tashkilotidan olingan ilmiy darajaga ega xorijiy professor-oʻqituvchilar soni'
 							type='number'
 							{...register('t10')}
 							error={errors.t10?.message}
 						/>
 						<LabeledInputWithInfo
-							label='TP – professor-oʻqituvchilarning pedagogik staji (oʻrtacha yil)'
+							label='TP – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi professor-o‘qituvchilar soni'
 							type='number'
-							{...register('tp')}
+							{...register('tp', { required: 'TT majburiy maydon' })}
 							error={errors.tp?.message}
 						/>
 						<LabeledInputWithInfo
-							label='TT – professor-oʻqituvchilarning umumiy ish staji (oʻrtacha yil)'
+							label='TT – bakalavriat va magistraturada kunduzgi va kechgi ta’lim shaklida tahsil olayotgan umumiy talabalar soni'
 							type='number'
-							{...register('tt')}
+							{...register('tt', { required: 'TT majburiy maydon' })}
 							error={errors.tt?.message}
 						/>
 						<LabeledInputWithInfo
-							label='TID – professor-oʻqituvchilarning oʻrtacha yoshi'
+							label='TID – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi ilmiy darajasiz professor-o‘qituvchilar soni'
 							type='number'
 							{...register('tid')}
 							error={errors.tid?.message}
 						/>
 						<LabeledInputWithInfo
-							label='HS – professor-oʻqituvchilar tomonidan chop etilgan darslik va oʻquv qoʻllanmalar soni'
+							label='HS – falsafa doktori (PhD) va fan doktori (DSc) ilmiy darajalarini olish bo‘yicha doktorlik dissertatsiyasini himoya qilgan izlanuvchilar soni'
 							type='number'
 							{...register('hs')}
 							error={errors.hs?.message}
 						/>
 						<LabeledInputWithInfo
-							label='SumY – Yillik umumiy oʻqitish yuklari (soat)'
+							label='∑Y - ilmiy darajaga (PhD yoki DSc) ega bo‘lgan asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi professor-o‘qituvchilarning yoshlarining yig‘indisi'
 							type='number'
 							{...register('sumY')}
 							error={errors.sumY?.message}
