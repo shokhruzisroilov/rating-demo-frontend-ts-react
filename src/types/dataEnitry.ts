@@ -34,25 +34,35 @@ export interface ScientificActivityResponse extends ScientificActivityFormData {
 }
 
 // Professor-teacher uchun schema
-export const professorTeacherSchema = z.object({
-	universityId: z.coerce.number(),
-	periodId: z.coerce.number(),
-	t1: z.coerce.number(),
-	t2: z.coerce.number(),
-	t3: z.coerce.number(),
-	t4: z.coerce.number(),
-	t5: z.coerce.number(),
-	t6: z.coerce.number(),
-	t7: z.coerce.number(),
-	t8: z.coerce.number(),
-	t9: z.coerce.number(),
-	t10: z.coerce.number(),
-	tp: z.coerce.number().min(1),
-	tt: z.coerce.number().min(1),
-	tid: z.coerce.number(),
-	hs: z.coerce.number(),
-	sumY: z.coerce.number(),
-})
+export const professorTeacherSchema = z
+	.object({
+		universityId: z.coerce.number(),
+		periodId: z.coerce.number(),
+		t1: z.coerce.number(),
+		t2: z.coerce.number(),
+		t3: z.coerce.number(),
+		t4: z.coerce.number(),
+		t5: z.coerce.number(),
+		t6: z.coerce.number(),
+		t7: z.coerce.number(),
+		t8: z.coerce.number(),
+		t9: z.coerce.number(),
+		t10: z.coerce.number(),
+		tp: z.coerce.number().min(1),
+		tt: z.coerce.number().min(1),
+		tid: z.coerce.number(),
+		hs: z.coerce.number(),
+		sumY: z.coerce.number(),
+	})
+	.superRefine((data, ctx) => {
+		if (data.t2 + data.t3 > data.t1) {
+			ctx.addIssue({
+				path: ['t1'],
+				message: 't2 va t3 yig‘indisi t1 dan katta bo‘lishi mumkin emas',
+				code: z.ZodIssueCode.custom,
+			})
+		}
+	})
 
 export type ProfessorTeacherFormData = z.infer<typeof professorTeacherSchema>
 export interface ProfessorTeacherResponse extends ProfessorTeacherFormData {
