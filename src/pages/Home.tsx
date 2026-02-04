@@ -19,6 +19,7 @@ import {
 	SelectValue,
 } from '@/components/ui/select'
 import { useCalculateMutation } from '@/hooks/useCalculations'
+import { useFetchUniversityData } from '@/hooks/useDataEnitry'
 import { useRatingPeriods } from '@/hooks/useRatingPeriods.ts'
 import { useEffect, useState } from 'react'
 import {
@@ -76,6 +77,7 @@ const Home = () => {
 	]
 
 	const { data: ratingPeriods, isLoading, isError } = useRatingPeriods()
+
 	const navigate = useNavigate()
 	const calculateMutation = useCalculateMutation()
 
@@ -85,6 +87,11 @@ const Home = () => {
 
 	const universityId = user?.universityId
 	const periodId = selectedPeriod?.id
+
+	const { data: universityData } = useFetchUniversityData(
+		Number(universityId),
+		Number(periodId),
+	)
 
 	useEffect(() => {
 		const initializeData = () => {
@@ -281,6 +288,7 @@ const Home = () => {
 										universityId={universityId}
 										periodId={periodId}
 										onSuccess={handleStepComplete}
+										universityData={universityData}
 									/>
 								)}
 
@@ -289,6 +297,7 @@ const Home = () => {
 										universityId={universityId}
 										periodId={periodId}
 										onSuccess={handleStepComplete}
+										universityData={universityData}
 									/>
 								)}
 
@@ -297,6 +306,7 @@ const Home = () => {
 										universityId={universityId}
 										periodId={periodId}
 										onSuccess={handleStepComplete}
+										universityData={universityData}
 									/>
 								)}
 
@@ -305,6 +315,7 @@ const Home = () => {
 										universityId={universityId}
 										periodId={periodId}
 										onSuccess={handleStepComplete}
+										universityData={universityData}
 									/>
 								)}
 							</>

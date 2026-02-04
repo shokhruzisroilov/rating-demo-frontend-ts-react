@@ -16,12 +16,14 @@ interface InternationalActivityFormProps {
 	universityId: number
 	periodId: number
 	onSuccess: () => void
+	universityData: any
 }
 
 const InternationalActivityForm: React.FC<InternationalActivityFormProps> = ({
 	universityId,
 	periodId,
 	onSuccess,
+	universityData,
 }) => {
 	const { mutateAsync, isPending } = useInternationalActivity()
 
@@ -35,20 +37,20 @@ const InternationalActivityForm: React.FC<InternationalActivityFormProps> = ({
 		defaultValues: {
 			universityId,
 			periodId,
-			x1: 0,
-			x2: 0,
-			x3: 0,
-			x4: 0,
-			x5: 0,
-			x6: 0,
-			x7: 0,
-			x8: 0,
-			x9: 0,
-			x10: 0,
-			x11: 0,
-			x12: 0,
-			x13: 0,
-			x14: 0,
+			x1: universityData?.internationalActivityData?.x1 ?? 0,
+			x2: universityData?.internationalActivityData?.x2 ?? 0,
+			x3: universityData?.internationalActivityData?.x3 ?? 0,
+			x4: universityData?.internationalActivityData?.x4 ?? 0,
+			x5: universityData?.internationalActivityData?.x5 ?? 0,
+			x6: universityData?.internationalActivityData?.x6 ?? 0,
+			x7: universityData?.internationalActivityData?.x7 ?? 0,
+			x8: universityData?.internationalActivityData?.x8 ?? 0,
+			x9: universityData?.internationalActivityData?.x9 ?? 0,
+			x10: universityData?.internationalActivityData?.x10 ?? 0,
+			x11: universityData?.internationalActivityData?.x11 ?? 0,
+			x12: universityData?.internationalActivityData?.x12 ?? 0,
+			x13: universityData?.internationalActivityData?.x13 ?? 0,
+			x14: universityData?.internationalActivityData?.x14 ?? 0,
 		},
 	})
 
@@ -84,84 +86,98 @@ const InternationalActivityForm: React.FC<InternationalActivityFormProps> = ({
 						<LabeledInputWithInfo
 							label='X1 – Jahon bankining Yuqori daromadli iqtisodiyotga ega rivojlangan mamlakatlar ro‘yxatiga kirgan davlatlar talabalari'
 							type='number'
+							step='any'
 							{...register('x1')}
 							error={errors.x1?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X2 – Markaziy Osiyo davlatlari talabalari'
 							type='number'
+							step='any'
 							{...register('x2')}
 							error={errors.x2?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X3 – boshqa davlatlar talabalari'
 							type='number'
+							step='any'
 							{...register('x3')}
 							error={errors.x3?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X4 – “TOP-100” xorijiy oliy taʼlim tashkiloti bilan almashinuv dasturida (outbound, inbound) oflayn ishtirok etgan talabalari soni'
 							type='number'
+							step='any'
 							{...register('x4')}
 							error={errors.x4?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X5 – “TOP-300” xorijiy oliy taʼlim tashkiloti bilan almashinuv dasturida (outbound, inbound) oflayn ishtirok etgan talabalari soni'
 							type='number'
+							step='any'
 							{...register('x5')}
 							error={errors.x5?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X6 – “TOP-500” xorijiy oliy taʼlim tashkiloti bilan almashinuv dasturida (outbound, inbound) oflayn ishtirok etgan talabalari soni'
 							type='number'
+							step='any'
 							{...register('x6')}
 							error={errors.x6?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X7 – xorijiy oliy taʼlim tashkiloti bilan almashinuv dasturida (outbound, inbound) oflayn ishtirok etgan talabalari soni'
 							type='number'
+							step='any'
 							{...register('x7')}
 							error={errors.x7?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X8 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi almashinuv dasturining chiqish (outbound) qismida ishtirok etuvchi professor-oʻqituvchilar soni'
 							type='number'
+							step='any'
 							{...register('x8')}
 							error={errors.x8?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X9 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi almashinuv dasturining kirish (inbound) qismida ishtirok etuvchi xorijiy oliy ta’lim tashkilot professor-oʻqituvchisi soni'
 							type='number'
+							step='any'
 							{...register('x9')}
 							error={errors.x9?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X10 – “TOP-100” xorijiy oliy taʼlim tashkiloti bilan tashkil etilgan qoʻshma taʼlim dasturlarda tahsil olayotgan talabalari soni'
 							type='number'
+							step='any'
 							{...register('x10')}
 							error={errors.x10?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X11 – “TOP-300” xorijiy oliy taʼlim tashkiloti bilan tashkil etilgan qoʻshma taʼlim dasturlarda tahsil olayotgan talabalari soni'
 							type='number'
+							step='any'
 							{...register('x11')}
 							error={errors.x11?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X12 – “TOP-500” xorijiy oliy taʼlim tashkiloti bilan tashkil etilgan qoʻshma taʼlim dasturlarda tahsil olayotgan talabalari soni'
 							type='number'
+							step='any'
 							{...register('x12')}
 							error={errors.x12?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X13 – “TOP-1000” xorijiy oliy taʼlim tashkiloti bilan tashkil etilgan qoʻshma taʼlim dasturlarda tahsil olayotgan talabalari soni'
 							type='number'
+							step='any'
 							{...register('x13')}
 							error={errors.x13?.message}
 						/>
 						<LabeledInputWithInfo
 							label='X14 – “TOP-1000” ro‘yxatiga kirmaydigan xorijiy oliy taʼlim tashkiloti bilan tashkil etilgan qoʻshma taʼlim dasturlarda tahsil olayotgan talabalari soni'
 							type='number'
+							step='any'
 							{...register('x14')}
 							error={errors.x14?.message}
 						/>

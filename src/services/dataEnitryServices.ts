@@ -7,6 +7,7 @@ import type {
 	ProfessorTeacherResponse,
 	ScientificActivityFormData,
 	ScientificActivityResponse,
+	UniversityData,
 } from '@/types/dataEnitry'
 import api from './api'
 
@@ -49,6 +50,17 @@ export const submitGraduateEmployment = async (
 	const response = await api.post<GraduateEmploymentResponse>(
 		'/data-entry/graduate-employment',
 		data,
+	)
+	return response.data
+}
+
+// get data
+export const fetchUniversityData = async (
+	universityId: number,
+	periodId: number,
+): Promise<UniversityData> => {
+	const response = await api.get(
+		`/data-entry/university/${universityId}/period/${periodId}`,
 	)
 	return response.data
 }

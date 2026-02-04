@@ -60,7 +60,8 @@ export const professorTeacherSchema = z
 		if (data.t2 + data.t3 > data.tp) {
 			ctx.addIssue({
 				path: ['tp'],
-				message: "T2 (DSc/professor soni) va T3 (PhD/dotsent soni) yig'indisi TP (asosiy shtat P-O soni) dan oshmasligi kerak",
+				message:
+					"T2 (DSc/professor soni) va T3 (PhD/dotsent soni) yig'indisi TP (asosiy shtat P-O soni) dan oshmasligi kerak",
 				code: z.ZodIssueCode.custom,
 			})
 		}
@@ -126,4 +127,15 @@ export interface GraduateEmploymentResponse extends GraduateEmploymentFormData {
 	universityName: string
 	periodName: string
 	submittedAt: string
+}
+
+export interface UniversityData {
+	universityId: number
+	universityName: string
+	periodId: number
+	periodName: string
+	professorTeacherData: any
+	scientificActivityData: any
+	internationalActivityData: any
+	graduateEmploymentData: any
 }

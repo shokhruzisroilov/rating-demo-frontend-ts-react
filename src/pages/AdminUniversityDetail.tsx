@@ -129,7 +129,7 @@ const AdminUniversityDetail = () => {
 										required
 									/>
 								</Field>
-								<Field>
+								{/* <Field>
 									<Label>Role</Label>
 									<select
 										className='w-full border rounded-md p-2'
@@ -144,7 +144,7 @@ const AdminUniversityDetail = () => {
 										<option value='UNIVERSITY_ADMIN'>Universitet amin</option>
 										<option value='ADMIN'>Admin</option>
 									</select>
-								</Field>
+								</Field> */}
 								<Field className='flex items-center gap-2'>
 									<div className='flex items-center gap-2 p-2 rounded'>
 										<Label>Faol</Label>
@@ -177,7 +177,6 @@ const AdminUniversityDetail = () => {
 						<TableHead>ID</TableHead>
 						<TableHead>Email</TableHead>
 						<TableHead>Ism Familiya</TableHead>
-						<TableHead>Role</TableHead>
 						<TableHead>Status</TableHead>
 						<TableHead>Harakatlar</TableHead>
 					</TableRow>
@@ -188,7 +187,6 @@ const AdminUniversityDetail = () => {
 							<TableCell>{user.id}</TableCell>
 							<TableCell>{user.email}</TableCell>
 							<TableCell>{user.fullName}</TableCell>
-							<TableCell>{user.role}</TableCell>
 							<TableCell>{user.active ? 'Faol' : 'Faol emas'}</TableCell>
 							<TableCell className='flex gap-2'>
 								<Button

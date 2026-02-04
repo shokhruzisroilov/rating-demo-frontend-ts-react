@@ -209,7 +209,10 @@ const AdminUniversities = () => {
 								<TableCell>{university.code}</TableCell>
 								<TableCell>{university.name}</TableCell>
 								<TableCell>{university.region}</TableCell>
-								<TableCell>{university.type}</TableCell>
+								<TableCell>
+									{(university.type === 'PRIVATE' && 'Xususiy') ||
+										(university.type === 'STATE' && 'Davlat')}
+								</TableCell>
 								<TableCell>
 									{university.active ? 'Faol' : 'Faol emas'}
 								</TableCell>

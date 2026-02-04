@@ -16,12 +16,14 @@ interface GraduateEmploymentFormProps {
 	universityId: number
 	periodId: number
 	onSuccess: () => void
+	universityData: any
 }
 
 const GraduateEmploymentForm: React.FC<GraduateEmploymentFormProps> = ({
 	universityId,
 	periodId,
 	onSuccess,
+	universityData,
 }) => {
 	const { mutateAsync, isPending } = useGraduateEmployment()
 
@@ -35,14 +37,14 @@ const GraduateEmploymentForm: React.FC<GraduateEmploymentFormProps> = ({
 		defaultValues: {
 			universityId,
 			periodId,
-			b1: 0,
-			b2: 0,
-			b3: 0,
-			b4: 0,
-			b5: 0,
-			tb: 0,
-			yort: 0,
-			yref: 0,
+			b1: universityData?.graduateEmploymentData?.b1 ?? 0,
+			b2: universityData?.graduateEmploymentData?.b2 ?? 0,
+			b3: universityData?.graduateEmploymentData?.b3 ?? 0,
+			b4: universityData?.graduateEmploymentData?.b4 ?? 0,
+			b5: universityData?.graduateEmploymentData?.b5 ?? 0,
+			tb: universityData?.graduateEmploymentData?.tb ?? 0,
+			yort: universityData?.graduateEmploymentData?.yort ?? 0,
+			yref: universityData?.graduateEmploymentData?.yref ?? 0,
 		},
 	})
 
@@ -82,48 +84,56 @@ const GraduateEmploymentForm: React.FC<GraduateEmploymentFormProps> = ({
 						<LabeledInputWithInfo
 							label='B1 – Yakka tartibdagi tadbirkor yoki ta’sischi sifatida faoliyat ko‘rsatayotgan, davlat organi yoki xo‘jalik yurituvchi subyektda ishlayotgan bitiruvchilar soni'
 							type='number'
+							step='any'
 							{...register('b1')}
 							error={errors.b1?.message}
 						/>
 						<LabeledInputWithInfo
 							label='B2 – Ta’limning keyingi bosqichi bilan qamrab olingan, ikki yoshgacha bola parvarishi bilan band, 1-2 guruh nogironi, o‘zini o‘zi band qilgan bitiruvchilar soni'
 							type='number'
+							step='any'
 							{...register('b2')}
 							error={errors.b2?.message}
 						/>
 						<LabeledInputWithInfo
 							label='B3 – bitirgandan soʻng 3 oy ichida ishga joylashgan bitiruvchilar soni'
 							type='number'
+							step='any'
 							{...register('b3')}
 							error={errors.b3?.message}
 						/>
 						<LabeledInputWithInfo
 							label='B4 – bitirgandan soʻng 6 oy ichida ishga joylashgan bitiruvchilar soni'
 							type='number'
+							step='any'
 							{...register('b4')}
 							error={errors.b4?.message}
 						/>
 						<LabeledInputWithInfo
 							label='B5 – bitirgandan soʻng 12 oy ichida ishga joylashgan bitiruvchilar soni'
 							type='number'
+							step='any'
 							{...register('b5')}
 							error={errors.b5?.message}
 						/>
 						<LabeledInputWithInfo
 							label='ТB – bitiruvchilar soni'
 							type='number'
+							step='any'
 							{...register('tb')}
 							error={errors.tb?.message}
 						/>
 						<LabeledInputWithInfo
 							label='Yoʻrt – ishga joylashgan bitiruvchilarning oʻrtacha oylik daromadi (ish haqi)'
 							type='number'
+							step='any'
 							{...register('yort')}
 							error={errors.yort?.message}
 						/>
 						<LabeledInputWithInfo
 							label="Yref – Milliy statistika qo'mitasi ma'lumotlariga ko'ra, O‘zbekiston Respublikasida o‘rtacha oylik nominal hisoblangan ish haqi"
 							type='number'
+							step='any'
 							{...register('yref')}
 							error={errors.yref?.message}
 						/>

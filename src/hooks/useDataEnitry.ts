@@ -1,4 +1,5 @@
 import {
+	fetchUniversityData,
 	submitGraduateEmployment,
 	submitInternationalActivity,
 	submitProfessorTeacher,
@@ -9,8 +10,9 @@ import type {
 	InternationalActivityFormData,
 	ProfessorTeacherFormData,
 	ScientificActivityFormData,
+	UniversityData,
 } from '@/types/dataEnitry'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const useDataEntry = () => {
 	return useMutation({
@@ -41,5 +43,15 @@ export const useGraduateEmployment = () => {
 		mutationKey: ['graduateEmploymentSubmission'],
 		mutationFn: (data: GraduateEmploymentFormData) =>
 			submitGraduateEmployment(data),
+	})
+}
+
+export const useFetchUniversityData = (
+	universityId: number,
+	periodId: number,
+) => {
+	return useQuery<UniversityData>({
+		queryKey: ['universityData', universityId, periodId],
+		queryFn: () => fetchUniversityData(universityId, periodId),
 	})
 }

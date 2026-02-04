@@ -24,7 +24,6 @@ const LabeledInputWithInfo = forwardRef<
 				ref={ref}
 				className={`h-12.5 rounded-xl bg-[#F4F6FC] ${error ? 'border-red-500' : ''}`}
 			/>
-
 			{error && <p className='text-red-500 text-sm mt-1'>{error}</p>}
 		</div>
 	)
