@@ -14,6 +14,15 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select'
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableFooter,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from '@/components/ui/table'
 import { useRatingPeriods } from '@/hooks/useRatingPeriods.ts'
 import { useCalculateRatings } from '@/hooks/useRatings'
 import { useEffect, useState } from 'react'
@@ -186,7 +195,7 @@ const AdminHome = () => {
 	)
 
 	return (
-		<div className='p-5'>
+		<div className='w-full'>
 			{/* ====== Select Period Modal ====== */}
 			<Dialog open={showWelcomeModal} onOpenChange={setShowWelcomeModal}>
 				<DialogContent className='sm:max-w-md rounded-4xl'>
@@ -252,78 +261,90 @@ const AdminHome = () => {
 				</p>
 			)}
 
-			{/* ====== TABLE ====== */}
 			{ratings && ratings.length > 0 && (
-				<div className='overflow-x-auto rounded-2xl border bg-white shadow-sm'>
-					<table className='w-full border-collapse text-sm'>
-						<thead className='bg-[#F4F6FC]'>
-							<tr>
-								<th
-									className='border px-3 py-2 text-center cursor-pointer select-none whitespace-nowrap min-w-20'
-									onClick={() => handleSort('rank')}
-								>
-									T/r <SortIcon active={sortKey === 'rank'} />
-								</th>
+				<Table>
+					<TableHeader>
+						<TableRow>
+							<TableHead
+								className='text-center cursor-pointer'
+								onClick={() => handleSort('rank')}
+							>
+								T/r <SortIcon active={sortKey === 'rank'} />
+							</TableHead>
 
-								<th
-									className='border px-3 py-2 text-left cursor-pointer select-none whitespace-nowrap min-w-[320px]'
-									onClick={() => handleSort('universityName')}
-								>
-									Oliy ta'lim tashkilotining nomi{' '}
-									<SortIcon active={sortKey === 'universityName'} />
-								</th>
+							<TableHead
+								className='cursor-pointer'
+								onClick={() => handleSort('universityName')}
+							>
+								Oliy ta'lim tashkiloti
+								<SortIcon active={sortKey === 'universityName'} />
+							</TableHead>
 
-								{Object.entries(indicatorsMap).map(
-									([backendKey, displayName]) => (
-										<th
-											key={backendKey}
-											className='border px-3 py-2 text-center cursor-pointer select-none whitespace-nowrap min-w-75'
-											onClick={() => handleSort(displayName)}
-										>
-											<div className='flex items-center justify-center gap-1'>
-												<span className='text-sm leading-tight'>
-													{displayName}
-												</span>
-												<SortIcon active={sortKey === backendKey} />
-											</div>
-										</th>
-									),
-								)}
+							{Object.entries(indicatorsMap).map(
+								([backendKey, displayName]) => (
+									<TableHead
+										key={backendKey}
+										className='text-center cursor-pointer'
+										onClick={() => handleSort(backendKey)}
+									>
+										{displayName}
+										<SortIcon active={sortKey === backendKey} />
+									</TableHead>
+								),
+							)}
 
-								<th
-									className='border px-3 py-2 text-center cursor-pointer select-none whitespace-nowrap min-w-37.5'
-									onClick={() => handleSort('compositeScore')}
-								>
-									Umumiy ball <SortIcon active={sortKey === 'compositeScore'} />
-								</th>
-							</tr>
-						</thead>
+							<TableHead
+								className='text-center cursor-pointer'
+								onClick={() => handleSort('compositeScore')}
+							>
+								Umumiy ball
+								<SortIcon active={sortKey === 'compositeScore'} />
+							</TableHead>
+						</TableRow>
+					</TableHeader>
 
-						<tbody>
-							{sortedRatings.map(item => (
-								<tr key={item.universityId} className='hover:bg-gray-50'>
-									<td className='border px-3 py-2 text-center font-medium'>
-										{item.rank}
-									</td>
+					<TableBody>
+						{sortedRatings.length ? (
+							sortedRatings.map(item => (
+								<TableRow key={item.universityId} className='hover:bg-muted/50'>
+									<TableCell className='text-center'>{item.rank}</TableCell>
 
-									<td className='border px-3 py-2 font-semibold'>
-										{item.universityName}
-									</td>
+									<TableCell>{item.universityName}</TableCell>
 
 									{Object.keys(indicatorsMap).map(key => (
-										<td key={key} className='border px-3 py-2 text-center'>
+										<TableCell key={key} className='text-center'>
 											{item.weightedScores[key]}
-										</td>
+										</TableCell>
 									))}
 
-									<td className='border px-3 py-2 text-center font-bold text-blue-600'>
+									<TableCell className='text-center font-semibold'>
 										{item.compositeScore}
-									</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
-				</div>
+									</TableCell>
+								</TableRow>
+							))
+						) : (
+							<TableRow>
+								<TableCell
+									colSpan={Object.keys(indicatorsMap).length + 3}
+									className='h-24 text-center'
+								>
+									Maʼlumot topilmadi
+								</TableCell>
+							</TableRow>
+						)}
+					</TableBody>
+
+					<TableFooter>
+						<TableRow>
+							<TableCell
+								colSpan={Object.keys(indicatorsMap).length + 3}
+								className='text-right'
+							>
+								Jami universitetlar: {sortedRatings.length}
+							</TableCell>
+						</TableRow>
+					</TableFooter>
+				</Table>
 			)}
 		</div>
 	)

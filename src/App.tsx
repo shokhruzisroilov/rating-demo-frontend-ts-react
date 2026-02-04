@@ -7,6 +7,8 @@ import Layout from './components/Layout'
 import ProtectedRoute from './components/ProtectedRoute'
 import { Home, Login, NotFound } from './pages'
 import AdminHome from './pages/AdminHome'
+import AdminUniversities from './pages/AdminUniversities'
+import AdminUniversityDetail from './pages/AdminUniversityDetail'
 import CalculationResult from './pages/CalculationResult'
 import { useAuthStore } from './store/authStore'
 
@@ -38,6 +40,11 @@ function App() {
 							{user && user.role === 'ADMIN' && (
 								<>
 									<Route index element={<AdminHome />} />
+									<Route path='/universities' element={<AdminUniversities />} />
+									<Route
+										path='/universities/:id'
+										element={<AdminUniversityDetail />}
+									/>
 								</>
 							)}
 						</Route>
