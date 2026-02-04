@@ -44,7 +44,6 @@ const AdminHome = () => {
 	const {
 		mutate: calculateRatings,
 		data: ratings,
-		isPending: ratingsLoading,
 		error: ratingsError,
 	} = useCalculateRatings()
 
@@ -104,10 +103,11 @@ const AdminHome = () => {
 	}
 
 	// ====== Calculate ======
-	const handleCalculate = () => {
-		if (!periodId) return
-		calculateRatings(periodId)
-	}
+	useEffect(() => {
+		if (periodId && !ratings) {
+			calculateRatings(periodId)
+		}
+	}, [periodId])
 
 	// ====== Loading / Error ======
 	if (periodsLoading) return <p>Davrlar yuklanmoqda...</p>
@@ -242,14 +242,6 @@ const AdminHome = () => {
 							<EditIcon className='ml-2 h-5 w-5' />
 						</Button>
 					)}
-
-					<Button
-						onClick={handleCalculate}
-						disabled={!periodId || ratingsLoading}
-						className='h-13 rounded-xl bg-[#4076FF] hover:bg-[#4076FF] cursor-pointer'
-					>
-						{ratingsLoading ? 'Hisoblanmoqda...' : 'Hisoblash'}
-					</Button>
 				</div>
 			</div>
 
