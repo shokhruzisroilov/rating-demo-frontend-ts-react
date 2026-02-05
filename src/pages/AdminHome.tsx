@@ -195,7 +195,7 @@ const AdminHome = () => {
 	)
 
 	return (
-		<div className='w-full'>
+		<div className='w-full max-w-[84vw]'>
 			{/* ====== Select Period Modal ====== */}
 			<Dialog open={showWelcomeModal} onOpenChange={setShowWelcomeModal}>
 				<DialogContent className='sm:max-w-md rounded-4xl'>

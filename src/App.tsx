@@ -7,9 +7,11 @@ import Layout from './components/Layout'
 import ProtectedRoute from './components/ProtectedRoute'
 import { Home, Login, NotFound } from './pages'
 import AdminHome from './pages/AdminHome'
+import AdminIndicators from './pages/AdminIndicators'
 import AdminUniversities from './pages/AdminUniversities'
 import AdminUniversityDetail from './pages/AdminUniversityDetail'
 import CalculationResult from './pages/CalculationResult'
+import Dashboard from './pages/Dashboard'
 import { useAuthStore } from './store/authStore'
 
 function App() {
@@ -39,8 +41,13 @@ function App() {
 							)}
 							{user && user.role === 'ADMIN' && (
 								<>
-									<Route index element={<AdminHome />} />
+									<Route index element={<Dashboard />} />
+									<Route path='/universities-rating' element={<AdminHome />} />
 									<Route path='/universities' element={<AdminUniversities />} />
+									<Route
+										path='/admin-indicators'
+										element={<AdminIndicators />}
+									/>
 									<Route
 										path='/universities/:id'
 										element={<AdminUniversityDetail />}

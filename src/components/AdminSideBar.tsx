@@ -24,6 +24,23 @@ const AdminSideBar = () => {
 
 				<li>
 					<NavLink
+						to='/universities-rating'
+						className={({ isActive }) =>
+							`flex items-center gap-3 px-3 py-2 rounded-lg transition-all
+							${
+								isActive
+									? 'bg-blue-100 text-blue-600 font-semibold border-l-4 border-blue-500'
+									: 'text-gray-600 hover:bg-gray-100'
+							}`
+						}
+					>
+						<GraduationCap size={20} />
+						<span>Universitetlar reytinglari</span>
+					</NavLink>
+				</li>
+
+				<li>
+					<NavLink
 						to='/universities'
 						className={({ isActive }) =>
 							`flex items-center gap-3 px-3 py-2 rounded-lg transition-all
@@ -36,6 +53,22 @@ const AdminSideBar = () => {
 					>
 						<GraduationCap size={20} />
 						<span>Universitetlar</span>
+					</NavLink>
+				</li>
+				<li>
+					<NavLink
+						to='/admin-indicators'
+						className={({ isActive }) =>
+							`flex items-center gap-3 px-3 py-2 rounded-lg transition-all
+							${
+								isActive
+									? 'bg-blue-100 text-blue-600 font-semibold border-l-4 border-blue-500'
+									: 'text-gray-600 hover:bg-gray-100'
+							}`
+						}
+					>
+						<GraduationCap size={20} />
+						<span>Indicators</span>
 					</NavLink>
 				</li>
 			</ul>

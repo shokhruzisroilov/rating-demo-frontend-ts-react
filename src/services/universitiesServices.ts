@@ -8,7 +8,7 @@ export const fetchUniversities = async (page: number, size: number) => {
 	})
 	return data
 }
-
+	
 // create unversitie
 export const createUniversity = async (
 	body: Omit<University, 'id'>,
