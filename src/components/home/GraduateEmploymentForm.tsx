@@ -146,9 +146,7 @@ const GraduateEmploymentForm: React.FC<GraduateEmploymentFormProps> = ({
 						className='bg-[#4076FF] hover:bg-[#335ECC] text-white rounded-xl h-13'
 						disabled={isPending}
 					>
-						{isPending
-							? 'Yuborilmoqda...'
-							: 'Saqlash va Keyingi shaklga o‘tish'}
+						{isPending ? 'Yuborilmoqda...' : 'Saqlash'}
 					</Button>
 				</div>
 			</form>

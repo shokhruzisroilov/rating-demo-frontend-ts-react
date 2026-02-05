@@ -18,7 +18,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select'
-import { useCalculateMutation } from '@/hooks/useCalculations'
+// import { useCalculateMutation } from '@/hooks/useCalculations'
 import { useFetchUniversityData } from '@/hooks/useDataEnitry'
 import { useRatingPeriods } from '@/hooks/useRatingPeriods.ts'
 import { useEffect, useState } from 'react'
@@ -28,7 +28,7 @@ import {
 	FaGlobe,
 	FaGraduationCap,
 } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 interface SelectedPeriod {
 	id: number
@@ -47,6 +47,7 @@ const Home = () => {
 	const [selectedPeriod, setSelectedPeriod] = useState<SelectedPeriod | null>(
 		null,
 	)
+	const [showSuccessModal, setShowSuccessModal] = useState(false)
 	const [isInitialized, setIsInitialized] = useState(false)
 
 	const tabs = [
@@ -78,8 +79,8 @@ const Home = () => {
 
 	const { data: ratingPeriods, isLoading, isError } = useRatingPeriods()
 
-	const navigate = useNavigate()
-	const calculateMutation = useCalculateMutation()
+	// const navigate = useNavigate()
+	// const calculateMutation = useCalculateMutation()
 
 	// get universityId and periodId
 	const storedUser = localStorage.getItem('user')
@@ -137,10 +138,14 @@ const Home = () => {
 		newCompletedSteps[currentStep] = true
 		setCompletedSteps(newCompletedSteps)
 
-		// Agar oxirgi step bo'lmasa, keyingi stepga o'tish
-		if (currentStep < tabs.length - 1) {
-			setCurrentStep(currentStep + 1)
+		// Agar oxirgi step bo‘lsa — success modal
+		if (currentStep === tabs.length - 1) {
+			setShowSuccessModal(true)
+			return
 		}
+
+		// Aks holda keyingi step
+		setCurrentStep(currentStep + 1)
 	}
 
 	// Step-ga bosganda
@@ -151,21 +156,21 @@ const Home = () => {
 	}
 
 	// Hisoblash tugmasi
-	const handleCalculate = () => {
-		if (!universityId || !periodId) return
+	// const handleCalculate = () => {
+	// 	if (!universityId || !periodId) return
 
-		calculateMutation.mutate(
-			{ universityId, periodId },
-			{
-				onSuccess: () => {
-					navigate(`/calculation/${universityId}/${periodId}`)
-				},
-			},
-		)
-	}
+	// 	calculateMutation.mutate(
+	// 		{ universityId, periodId },
+	// 		{
+	// 			onSuccess: () => {
+	// 				navigate(`/calculation/${universityId}/${periodId}`)
+	// 			},
+	// 		},
+	// 	)
+	// }
 
 	// Barcha steplar tugallanganmi tekshirish
-	const allStepsCompleted = completedSteps.every(step => step)
+	// const allStepsCompleted = completedSteps.every(step => step)
 
 	// Loading holati
 	if (!isInitialized) {
@@ -210,11 +215,13 @@ const Home = () => {
 									Error loading periods
 								</SelectItem>
 							)}
-							{ratingPeriods?.map(period => (
-								<SelectItem key={period.id} value={period.id.toString()}>
-									{period.name}
-								</SelectItem>
-							))}
+							{ratingPeriods
+								?.filter(period => period.status === 'ACTIVE')
+								.map(period => (
+									<SelectItem key={period.id} value={period.id.toString()}>
+										{period.name}
+									</SelectItem>
+								))}
 						</SelectContent>
 					</Select>
 
@@ -318,6 +325,36 @@ const Home = () => {
 										universityData={universityData}
 									/>
 								)}
+
+								<Dialog
+									open={showSuccessModal}
+									onOpenChange={setShowSuccessModal}
+								>
+									<DialogContent className='sm:max-w-md rounded-2xl text-center'>
+										<DialogHeader>
+											<DialogTitle className='text-2xl font-bold'>
+												Barcha ma'lumotlar yuborildi ✅
+											</DialogTitle>
+										</DialogHeader>
+
+										<p className='text-gray-600 mt-2'>
+											Ma’lumotlaringiz muvaffaqiyatli saqlandi
+										</p>
+
+										<div className='flex gap-3 justify-center mt-6'>
+											<Button
+												variant='outline'
+												onClick={() => {
+													setShowSuccessModal(false)
+													setCurrentStep(0)
+													setCompletedSteps([false, false, false, false])
+												}}
+											>
+												Qayta topshirish
+											</Button>
+										</div>
+									</DialogContent>
+								</Dialog>
 							</>
 						) : (
 							<div className='text-center py-12'>
@@ -349,7 +386,7 @@ const Home = () => {
 								</Button>
 
 								{/* Barcha steplar tugallangandan keyin Hisoblash tugmasi ko'rinadi */}
-								{allStepsCompleted && (
+								{/* {allStepsCompleted && (
 									<Button
 										onClick={handleCalculate}
 										disabled={calculateMutation.isPending}
@@ -359,7 +396,7 @@ const Home = () => {
 											? 'Hisoblanmoqda...'
 											: 'Hisoblash'}
 									</Button>
-								)}
+								)} */}
 							</div>
 						)}
 					</div>

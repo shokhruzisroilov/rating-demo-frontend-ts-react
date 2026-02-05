@@ -11,9 +11,15 @@ const Layout = () => {
 			<Header />
 			<main className='w-full flex items-start'>
 				{user?.role === 'ADMIN' && <AdminSideBar />}
-				<div className='w-[88vw] p-4'>
-					<Outlet />
-				</div>
+				{user?.role === 'ADMIN' ? (
+					<div className='w-[88vw] p-4'>
+						<Outlet />
+					</div>
+				) : (
+					<div className='w-full'>
+						<Outlet />
+					</div>
+				)}
 			</main>
 		</div>
 	)
