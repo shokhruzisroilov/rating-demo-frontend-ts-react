@@ -215,11 +215,13 @@ const AdminHome = () => {
 						</SelectTrigger>
 
 						<SelectContent className='bg-[#F4F6FC]'>
-							{ratingPeriods?.map(period => (
-								<SelectItem key={period.id} value={period.id.toString()}>
-									{period.name}
-								</SelectItem>
-							))}
+							{ratingPeriods
+								?.filter(period => period.status === 'ACTIVE')
+								?.map(period => (
+									<SelectItem key={period.id} value={period.id.toString()}>
+										{period.name}
+									</SelectItem>
+								))}
 						</SelectContent>
 					</Select>
 

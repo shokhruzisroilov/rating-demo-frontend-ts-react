@@ -53,6 +53,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 		localStorage.removeItem('accessToken')
 		localStorage.removeItem('refreshToken')
 		localStorage.removeItem('user')
+		localStorage.removeItem('selectedAcademicYear')
 	},
 
 	refreshTokenFunc: async () => {
