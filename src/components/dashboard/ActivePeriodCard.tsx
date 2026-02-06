@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { format } from 'date-fns'
 import { Calendar, CheckCircle, XCircle } from 'lucide-react'
 
 interface ActivePeriodCardProps {
@@ -7,8 +6,6 @@ interface ActivePeriodCardProps {
 }
 
 export function ActivePeriodCard({ data }: ActivePeriodCardProps) {
-	const startDate = format(new Date(data.activePeriod.startDate), 'dd.MM.yyyy')
-	const endDate = format(new Date(data.activePeriod.endDate), 'dd.MM.yyyy')
 
 	return (
 		<Card>
