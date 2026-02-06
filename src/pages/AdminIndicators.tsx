@@ -247,26 +247,26 @@ const AdminIndicators: React.FC = () => {
 											{
 												id: 'indicator19',
 												label:
-													'Xorijiy davlat fuqarosi hisoblangan talabalar ulushi',
+													'Ijtimoiy muhit va talabalarga yaratilgan shart-sharoitlar ( max 3)',
 											},
 											{
 												id: 'indicator20',
-												label: 'Talabalarning xalqaro akademik mobilligi',
+												label: 'Talabalarning taʼlim sifatidan qoniqish darajasi ( max 3)',
 											},
 											{
 												id: 'indicator21',
 												label:
-													'Professor-oʻqituvchilarning xalqaro akademik mobilligi',
+													'Professor-oʻqituvchilar uchun yaratilgan sharoitlar ( max 3)',
 											},
 											{
 												id: 'indicator22',
 												label:
-													'Xorijiy oliy ta’lim tashkilotlar bilan tashkil etilgan qoʻshma taʼlim dasturlari samaradorligi',
+													'Ish beruvchilar oʻrtasidagi bitiruvchilar nufuzi ( max 5)',
 											},
 											{
 												id: 'indicator23',
 												label:
-													'Ish beruvchilar oʻrtasidagi bitiruvchilar nufuzi',
+													'Oliy taʼlim tashkilotlarida taʼlim va boshqaruv faoliyatini raqamlashtirish ( max 5)',
 											},
 										].map(indicator => (
 											<LabeledInputWithInfo
