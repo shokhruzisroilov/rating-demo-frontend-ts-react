@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import { Home, Login, NotFound } from './pages'
 import AdminHome from './pages/AdminHome'
 import AdminIndicators from './pages/AdminIndicators'
+import AdminT1Pending from './pages/AdminT1Pending'
 import AdminUniversities from './pages/AdminUniversities'
 import AdminUniversityDetail from './pages/AdminUniversityDetail'
 import CalculationResult from './pages/CalculationResult'
@@ -48,6 +49,7 @@ function App() {
 										path='/admin-indicators'
 										element={<AdminIndicators />}
 									/>
+									<Route path='/t1-pending' element={<AdminT1Pending />} />
 									<Route
 										path='/universities/:id'
 										element={<AdminUniversityDetail />}

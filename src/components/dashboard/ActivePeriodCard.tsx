@@ -21,9 +21,6 @@ export function ActivePeriodCard({ data }: ActivePeriodCardProps) {
 			<CardContent className='space-y-4'>
 				<div>
 					<h3 className='font-semibold text-lg'>{data.activePeriod.name}</h3>
-					<p className='text-sm text-muted-foreground'>
-						{startDate} - {endDate}
-					</p>
 				</div>
 
 				<div className='grid grid-cols-2 gap-4'>

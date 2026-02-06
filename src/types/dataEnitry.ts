@@ -129,13 +129,66 @@ export interface GraduateEmploymentResponse extends GraduateEmploymentFormData {
 	submittedAt: string
 }
 
+// T1 Document type
+export interface T1Document {
+	id: number
+	fieldName: string
+	originalFileName: string
+	contentType: string
+	fileSize: number
+	uploadedById: number
+	uploadedByName: string
+	uploadedAt: string
+	downloadUrl: string
+}
+
+// T1 Status type
+export type T1Status = 'PENDING' | 'APPROVED' | 'REJECTED'
+
+// Updated ProfessorTeacherData with T1 fields
+export interface ProfessorTeacherData {
+	id: number
+	universityId: number
+	universityName: string
+	periodId: number
+	periodName: string
+	t1: number
+	t1Status: T1Status | null
+	t1RejectionReason: string | null
+	t1Documents: T1Document[]
+	t2: number
+	t3: number
+	t4: number
+	t5: number
+	t6: number
+	t7: number
+	t8: number
+	t9: number
+	t10: number
+	tp: number
+	tt: number
+	tid: number
+	hs: number
+	sumY: number
+	submittedAt: string
+}
+
 export interface UniversityData {
 	universityId: number
 	universityName: string
 	periodId: number
 	periodName: string
-	professorTeacherData: any
+	professorTeacherData: ProfessorTeacherData | null
 	scientificActivityData: any
 	internationalActivityData: any
 	graduateEmploymentData: any
+}
+
+// T1 Pending item for admin
+export interface T1PendingItem extends ProfessorTeacherData {}
+
+// T1 Status update request
+export interface T1StatusUpdateRequest {
+	status: 'APPROVED' | 'REJECTED'
+	rejectionReason?: string
 }

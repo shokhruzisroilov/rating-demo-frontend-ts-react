@@ -7,6 +7,9 @@ import type {
 	ProfessorTeacherResponse,
 	ScientificActivityFormData,
 	ScientificActivityResponse,
+	T1Document,
+	T1PendingItem,
+	T1StatusUpdateRequest,
 	UniversityData,
 } from '@/types/dataEnitry'
 import api from './api'
@@ -61,6 +64,58 @@ export const fetchUniversityData = async (
 ): Promise<UniversityData> => {
 	const response = await api.get(
 		`/data-entry/university/${universityId}/period/${periodId}`,
+	)
+	return response.data
+}
+
+// T1 Document upload
+export const uploadT1Document = async (
+	universityId: number,
+	periodId: number,
+	file: File,
+): Promise<T1Document> => {
+	const formData = new FormData()
+	formData.append('file', file)
+	const response = await api.post<T1Document>(
+		`/data-entry/university/${universityId}/period/${periodId}/t1-documents`,
+		formData,
+		{ headers: { 'Content-Type': 'multipart/form-data' } },
+	)
+	return response.data
+}
+
+// T1 Document delete
+export const deleteT1Document = async (documentId: number): Promise<void> => {
+	await api.delete(`/data-entry/documents/${documentId}`)
+}
+
+// T1 Document download
+export const downloadT1Document = async (documentId: number): Promise<Blob> => {
+	const response = await api.get(`/data-entry/documents/${documentId}/download`, {
+		responseType: 'blob',
+	})
+	return response.data
+}
+
+// Get T1 pending items (admin)
+export const fetchT1PendingItems = async (
+	periodId: number,
+): Promise<T1PendingItem[]> => {
+	const response = await api.get<T1PendingItem[]>(
+		`/data-entry/t1-pending?periodId=${periodId}`,
+	)
+	return response.data
+}
+
+// Update T1 status (admin)
+export const updateT1Status = async (
+	universityId: number,
+	periodId: number,
+	data: T1StatusUpdateRequest,
+): Promise<T1PendingItem> => {
+	const response = await api.put<T1PendingItem>(
+		`/data-entry/university/${universityId}/period/${periodId}/t1-status`,
+		data,
 	)
 	return response.data
 }
