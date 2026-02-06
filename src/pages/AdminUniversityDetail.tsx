@@ -30,6 +30,7 @@ import {
 import type { User } from '@/types/usersByUnversity'
 import { Label } from '@radix-ui/react-dropdown-menu'
 import { ChevronLeft, Edit, Trash } from 'lucide-react'
+
 type UserForm = Partial<User>
 
 const AdminUniversityDetail = () => {
@@ -43,6 +44,8 @@ const AdminUniversityDetail = () => {
 	const deleteMutation = useDeleteUserByUniversity(universityId)
 
 	const [open, setOpen] = useState(false)
+	const [passwordError, setPasswordError] = useState<string | null>(null)
+	const [emailError, setEmailError] = useState<string | null>(null)
 	const emptyForm: UserForm = {
 		email: '',
 		fullName: '',
@@ -53,26 +56,88 @@ const AdminUniversityDetail = () => {
 	}
 	const [form, setForm] = useState<UserForm>(emptyForm)
 
+	const validatePassword = (password: string): boolean => {
+		if (password.length < 6) {
+			setPasswordError("Parol kamida 6 ta belgidan iborat bo'lishi kerak")
+			return false
+		}
+		setPasswordError(null)
+		return true
+	}
+
+	const validateEmail = (email: string): boolean => {
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+		if (!emailRegex.test(email)) {
+			setEmailError("Email noto'g'ri formatda")
+			return false
+		}
+		setEmailError(null)
+		return true
+	}
+
+	const handleEmailChange = (value: string) => {
+		setForm({ ...form, email: value })
+		if (value.length > 0) {
+			validateEmail(value)
+		} else {
+			setEmailError(null)
+		}
+	}
+
+	const handlePasswordChange = (value: string) => {
+		setForm({ ...form, password: value })
+		if (value.length > 0) {
+			validatePassword(value)
+		} else {
+			setPasswordError(null)
+		}
+	}
+
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
+
+		// Email validatsiya
+		if (form.email && !validateEmail(form.email)) return
+
+		// Yangi user yaratishda parol majburiy va 6 tadan kam bo'lmasligi kerak
+		if (!form.id && form.password) {
+			if (!validatePassword(form.password)) return
+		}
+
+		// Tahrirlashda parol kiritilgan bo'lsa, validatsiya qilish
+		if (form.id && form.password && form.password.length > 0) {
+			if (!validatePassword(form.password)) return
+		}
+
 		if (form.id) {
 			await updateMutation.mutateAsync({ id: form.id, body: form })
 		} else {
-			await createMutation.mutateAsync(
-				form as Omit<User, 'id' | 'universityName'>,
-			)
+			await createMutation.mutateAsync(form as Omit<User, 'id' | 'universityName'>)
 		}
 		setOpen(false)
 		setForm(emptyForm)
+		setPasswordError(null)
+		setEmailError(null)
 	}
 
 	const handleEdit = (user: User) => {
-		setForm(user)
+		setForm({ ...user, password: '' })
+		setPasswordError(null)
+		setEmailError(null)
 		setOpen(true)
 	}
 
-	const handleDelete = (id: number) => {
-		deleteMutation.mutate(id)
+	const handleDelete = (userId: number) => {
+		deleteMutation.mutate(userId)
+	}
+
+	const handleDialogClose = (isOpen: boolean) => {
+		setOpen(isOpen)
+		if (!isOpen) {
+			setPasswordError(null)
+			setEmailError(null)
+			setForm(emptyForm)
+		}
 	}
 
 	return (
@@ -82,13 +147,13 @@ const AdminUniversityDetail = () => {
 					<Button
 						variant='outline'
 						className='cursor-pointer'
-						onClick={() => navigate(`/universities`)}
+						onClick={() => navigate('/universities')}
 					>
 						<ChevronLeft />
 					</Button>
 					<h1 className='font-bold text-2xl'>Foydalanuvchilar</h1>
 				</div>
-				<Dialog open={open} onOpenChange={setOpen}>
+				<Dialog open={open} onOpenChange={handleDialogClose}>
 					<DialogTrigger asChild>
 						<Button variant='outline'>Qo'shish</Button>
 					</DialogTrigger>
@@ -96,64 +161,61 @@ const AdminUniversityDetail = () => {
 						<form onSubmit={handleSubmit}>
 							<DialogHeader>
 								<DialogTitle>
-									{form.id ? 'Userni tahrirlash' : 'User qo‘shish'}
+									{form.id ? 'Userni tahrirlash' : "User qo'shish"}
 								</DialogTitle>
 							</DialogHeader>
 							<FieldGroup className='py-5'>
 								<Field>
 									<Label>Email</Label>
 									<Input
+										type='email'
 										value={form.email}
-										onChange={e => setForm({ ...form, email: e.target.value })}
+										onChange={e => handleEmailChange(e.target.value)}
 										required
+										className={emailError ? 'border-red-500' : ''}
 									/>
+									{emailError && (
+										<p className='text-red-500 text-sm mt-1'>{emailError}</p>
+									)}
 								</Field>
 
 								<Field>
-									<Label>Parol</Label>
+									<Label>
+										Parol
+										{form.id && (
+											<span className='text-gray-400 text-sm ml-1'>
+												(bo'sh qoldirsa o'zgarmaydi)
+											</span>
+										)}
+									</Label>
 									<Input
+										type='password'
 										value={form.password}
-										onChange={e =>
-											setForm({ ...form, password: e.target.value })
-										}
-										required
+										onChange={e => handlePasswordChange(e.target.value)}
+										required={!form.id}
+										className={passwordError ? 'border-red-500' : ''}
 									/>
+									{passwordError && (
+										<p className='text-red-500 text-sm mt-1'>{passwordError}</p>
+									)}
 								</Field>
+
 								<Field>
 									<Label>Ism Familiya</Label>
 									<Input
 										value={form.fullName}
-										onChange={e =>
-											setForm({ ...form, fullName: e.target.value })
-										}
+										onChange={e => setForm({ ...form, fullName: e.target.value })}
 										required
 									/>
 								</Field>
-								{/* <Field>
-									<Label>Role</Label>
-									<select
-										className='w-full border rounded-md p-2'
-										value={form.role}
-										onChange={e =>
-											setForm({
-												...form,
-												role: e.target.value as 'UNIVERSITY_ADMIN' | 'ADMIN',
-											})
-										}
-									>
-										<option value='UNIVERSITY_ADMIN'>Universitet amin</option>
-										<option value='ADMIN'>Admin</option>
-									</select>
-								</Field> */}
+
 								<Field className='flex items-center gap-2'>
 									<div className='flex items-center gap-2 p-2 rounded'>
 										<Label>Faol</Label>
 										<input
 											type='checkbox'
 											checked={form.active}
-											onChange={e =>
-												setForm({ ...form, active: e.target.checked })
-											}
+											onChange={e => setForm({ ...form, active: e.target.checked })}
 										/>
 									</div>
 								</Field>
@@ -162,9 +224,7 @@ const AdminUniversityDetail = () => {
 								<DialogClose asChild>
 									<Button variant='outline'>Cancel</Button>
 								</DialogClose>
-								<Button type='submit'>
-									{form.id ? 'Yangilash' : 'Qo‘shish'}
-								</Button>
+								<Button type='submit'>{form.id ? 'Yangilash' : "Qo'shish"}</Button>
 							</DialogFooter>
 						</form>
 					</DialogContent>
@@ -189,18 +249,10 @@ const AdminUniversityDetail = () => {
 							<TableCell>{user.fullName}</TableCell>
 							<TableCell>{user.active ? 'Faol' : 'Faol emas'}</TableCell>
 							<TableCell className='flex gap-2'>
-								<Button
-									size='sm'
-									variant='outline'
-									onClick={() => handleEdit(user)}
-								>
+								<Button size='sm' variant='outline' onClick={() => handleEdit(user)}>
 									<Edit />
 								</Button>
-								<Button
-									size='sm'
-									variant='outline'
-									onClick={() => handleDelete(user.id)}
-								>
+								<Button size='sm' variant='outline' onClick={() => handleDelete(user.id)}>
 									<Trash />
 								</Button>
 							</TableCell>
