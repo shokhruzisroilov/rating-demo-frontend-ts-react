@@ -159,6 +159,13 @@ const AdminHome = () => {
 			'Xorijiy oliy ta’lim tashkilotlar bilan tashkil etilgan qoʻshma taʼlim dasturlari samaradorligi',
 		indicator17_weighted: 'Bitiruvchilarning bandlik holati',
 		indicator18_weighted: 'Bitiruvchilarning ishga joylashish muddati',
+		indicator19_weighted:
+			'Ijtimoiy muhit va talabalarga yaratilgan shart-sharoitlar',
+		indicator20_weighted: 'Talabalarning taʼlim sifatidan qoniqish darajasi ',
+		indicator21_weighted: 'Professor-oʻqituvchilar uchun yaratilgan sharoitlar',
+		indicator22_weighted: 'Ish beruvchilar oʻrtasidagi bitiruvchilar nufuzi ',
+		indicator23_weighted:
+			'Oliy taʼlim tashkilotlarida taʼlim va boshqaruv faoliyatini raqamlashtirish',
 	}
 
 	// ====== Sorted ratings ======
