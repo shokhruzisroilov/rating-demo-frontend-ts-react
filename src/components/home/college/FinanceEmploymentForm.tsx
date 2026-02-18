@@ -12,7 +12,7 @@ import {
   financeEmploymentSchema,
   type CollegeData,
   type FinanceEmploymentFormData,
-} from "@/types/CollegeDataEnitry";
+} from "@/types/collegeDataEnitry";
 
 interface FinanceEmploymentFormProps {
   collegeId: number;

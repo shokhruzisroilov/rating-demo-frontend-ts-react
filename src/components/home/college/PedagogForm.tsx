@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { pedagogSchema, type CollegeData, type PedagogFormData } from "@/types/CollegeDataEnitry";
+import { pedagogSchema, type CollegeData, type PedagogFormData } from "@/types/collegeDataEnitry";
 import LabeledInputWithInfo from "../LabeledInputWithInfo";
 import HeadingPanel from "../HeadingPanel";
 import { Button } from "@/components/ui/button";
