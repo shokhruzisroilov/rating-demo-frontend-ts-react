@@ -1,9 +1,5 @@
 import { useFinanceEmployment } from "@/hooks/useCollegeDataEnitry";
-import {
-  financeEmploymentSchema,
-  type CollegeData,
-  type FinanceEmploymentFormData,
-} from "@/types/CollegeDataEnitry";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -12,6 +8,11 @@ import { toast } from "react-toastify";
 import HeadingPanel from "../HeadingPanel";
 import LabeledInputWithInfo from "../LabeledInputWithInfo";
 import { Button } from "@/components/ui/button";
+import {
+  financeEmploymentSchema,
+  type CollegeData,
+  type FinanceEmploymentFormData,
+} from "@/types/CollegeDataEnitry";
 
 interface FinanceEmploymentFormProps {
   collegeId: number;
