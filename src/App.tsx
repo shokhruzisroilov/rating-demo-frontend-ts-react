@@ -1,73 +1,85 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useEffect } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import Layout from './components/Layout'
-import ProtectedRoute from './components/ProtectedRoute'
-import { Home, Login, NotFound } from './pages'
-import AdminHome from './pages/AdminHome'
-import AdminIndicators from './pages/AdminIndicators'
-import AdminT1Pending from './pages/AdminT1Pending'
-import AdminUniversities from './pages/AdminUniversities'
-import AdminUniversityDetail from './pages/AdminUniversityDetail'
-import CalculationResult from './pages/CalculationResult'
-import Dashboard from './pages/Dashboard'
-import { useAuthStore } from './store/authStore'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Layout from "./components/Layout";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { Home, HomeCollege, Login, NotFound } from "./pages";
+import AdminHome from "./pages/AdminHome";
+import AdminIndicators from "./pages/AdminIndicators";
+import AdminT1Pending from "./pages/AdminT1Pending";
+import AdminUniversities from "./pages/AdminUniversities";
+import AdminUniversityDetail from "./pages/AdminUniversityDetail";
+import CalculationResult from "./pages/CalculationResult";
+import Dashboard from "./pages/Dashboard";
+import { useAuthStore } from "./store/authStore";
+import AdminColleges from "./pages/AdminColleges";
+import AdminCollegeDetail from "./pages/AdminCollegeDetail";
 
 function App() {
-	const queryClient = new QueryClient()
-	const { loadFromStorage } = useAuthStore()
-	const user = useAuthStore(state => state.user)
+  const queryClient = new QueryClient();
+  const { loadFromStorage } = useAuthStore();
+  const user = useAuthStore((state) => state.user);
 
-	useEffect(() => {
-		loadFromStorage()
-	}, [loadFromStorage])
+  useEffect(() => {
+    loadFromStorage();
+  }, [loadFromStorage]);
 
-	return (
-		<QueryClientProvider client={queryClient}>
-			<BrowserRouter>
-				<Routes>
-					{/* Protected routes */}
-					<Route element={<ProtectedRoute />}>
-						<Route path='/' element={<Layout />}>
-							{user && user.role === 'UNIVERSITY_ADMIN' && (
-								<>
-									<Route index element={<Home />} />
-									<Route
-										path='calculation/:universityId/:periodId'
-										element={<CalculationResult />}
-									/>
-								</>
-							)}
-							{user && user.role === 'ADMIN' && (
-								<>
-									<Route index element={<Dashboard />} />
-									<Route path='/universities-rating' element={<AdminHome />} />
-									<Route path='/universities' element={<AdminUniversities />} />
-									<Route
-										path='/admin-indicators'
-										element={<AdminIndicators />}
-									/>
-									<Route path='/t1-pending' element={<AdminT1Pending />} />
-									<Route
-										path='/universities/:id'
-										element={<AdminUniversityDetail />}
-									/>
-								</>
-							)}
-						</Route>
-					</Route>
+  return (
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          {/* Protected routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<Layout />}>
+              {user && user.role === "UNIVERSITY_ADMIN" && (
+                <>
+                  <Route index element={<Home />} />
+                  <Route
+                    path="calculation/:universityId/:periodId"
+                    element={<CalculationResult />}
+                  />
+                </>
+              )}
+              {user && user.role === "COLLEGE_ADMIN" && (
+                <>
+                  <Route index element={<HomeCollege />} />
+                </>
+              )}
+              {user && user.role === "ADMIN" && (
+                <>
+                  <Route index element={<Dashboard />} />
+                  <Route path="/universities-rating" element={<AdminHome />} />
+                  <Route path="/universities" element={<AdminUniversities />} />
+                  <Route path="/colleges" element={<AdminColleges />} />
+                  <Route
+                    path="/admin-indicators"
+                    element={<AdminIndicators />}
+                  />
+                  <Route path="/t1-pending" element={<AdminT1Pending />} />
+                  <Route
+                    path="/universities/:id"
+                    element={<AdminUniversityDetail />}
+                  />
+                  <Route
+                    path="/colleges/:id"
+                    element={<AdminCollegeDetail />}
+                  />
+                </>
+              )}
+            </Route>
+          </Route>
 
-					{/* Public routes */}
-					<Route path='/login' element={<Login />} />
-					<Route path='*' element={<NotFound />} />
-				</Routes>
+          {/* Public routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
 
-				<ToastContainer position='top-right' autoClose={3000} />
-			</BrowserRouter>
-		</QueryClientProvider>
-	)
+        <ToastContainer position="top-right" autoClose={3000} />
+      </BrowserRouter>
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;

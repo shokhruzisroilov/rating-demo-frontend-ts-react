@@ -1,0 +1,283 @@
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Field, FieldGroup } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  useCreateUserByUniversity,
+  useDeleteUserByUniversity,
+  useUpdateUserByUniversity,
+  useUsersByCollege,
+} from "@/hooks/useUsersByUnversity";
+import type { User } from "@/types/usersByUnversity";
+import { Label } from "@radix-ui/react-dropdown-menu";
+import { ChevronLeft, Edit, Trash } from "lucide-react";
+
+type UserForm = Partial<User>;
+
+const AdminCollegeDetail = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const universityId = Number(id);
+
+  const { data: users } = useUsersByCollege(universityId);
+  const createMutation = useCreateUserByUniversity(universityId);
+  const updateMutation = useUpdateUserByUniversity(universityId);
+  const deleteMutation = useDeleteUserByUniversity(universityId);
+
+  const [open, setOpen] = useState(false);
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const emptyForm: UserForm = {
+    email: "",
+    fullName: "",
+    password: "",
+    role: "COLLEGE_ADMIN",
+    collegeId: universityId,
+    active: true,
+  };
+  const [form, setForm] = useState<UserForm>(emptyForm);
+
+  const validatePassword = (password: string): boolean => {
+    if (password.length < 6) {
+      setPasswordError("Parol kamida 6 ta belgidan iborat bo'lishi kerak");
+      return false;
+    }
+    setPasswordError(null);
+    return true;
+  };
+
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Email noto'g'ri formatda");
+      return false;
+    }
+    setEmailError(null);
+    return true;
+  };
+
+  const handleEmailChange = (value: string) => {
+    setForm({ ...form, email: value });
+    if (value.length > 0) {
+      validateEmail(value);
+    } else {
+      setEmailError(null);
+    }
+  };
+
+  const handlePasswordChange = (value: string) => {
+    setForm({ ...form, password: value });
+    if (value.length > 0) {
+      validatePassword(value);
+    } else {
+      setPasswordError(null);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Email validatsiya
+    if (form.email && !validateEmail(form.email)) return;
+
+    // Yangi user yaratishda parol majburiy va 6 tadan kam bo'lmasligi kerak
+    if (!form.id && form.password) {
+      if (!validatePassword(form.password)) return;
+    }
+
+    // Tahrirlashda parol kiritilgan bo'lsa, validatsiya qilish
+    if (form.id && form.password && form.password.length > 0) {
+      if (!validatePassword(form.password)) return;
+    }
+
+    if (form.id) {
+      await updateMutation.mutateAsync({ id: form.id, body: form });
+    } else {
+      await createMutation.mutateAsync(
+        form as Omit<User, "id" | "universityName">,
+      );
+    }
+    setOpen(false);
+    setForm(emptyForm);
+    setPasswordError(null);
+    setEmailError(null);
+  };
+
+  const handleEdit = (user: User) => {
+    setForm({ ...user, password: "" });
+    setPasswordError(null);
+    setEmailError(null);
+    setOpen(true);
+  };
+
+  const handleDelete = (userId: number) => {
+    deleteMutation.mutate(userId);
+  };
+
+  const handleDialogClose = (isOpen: boolean) => {
+    setOpen(isOpen);
+    if (!isOpen) {
+      setPasswordError(null);
+      setEmailError(null);
+      setForm(emptyForm);
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex items-center justify-between py-4">
+        <div className="flex items-center gap-4">
+          <Button
+            variant="outline"
+            className="cursor-pointer"
+            onClick={() => navigate("/colleges")}
+          >
+            <ChevronLeft />
+          </Button>
+          <h1 className="font-bold text-2xl">Foydalanuvchilar</h1>
+        </div>
+        <Dialog open={open} onOpenChange={handleDialogClose}>
+          <DialogTrigger asChild>
+            <Button variant="outline">Qo'shish</Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-sm">
+            <form onSubmit={handleSubmit}>
+              <DialogHeader>
+                <DialogTitle>
+                  {form.id ? "Userni tahrirlash" : "User qo'shish"}
+                </DialogTitle>
+              </DialogHeader>
+              <FieldGroup className="py-5">
+                <Field>
+                  <Label>Email</Label>
+                  <Input
+                    type="email"
+                    value={form.email}
+                    onChange={(e) => handleEmailChange(e.target.value)}
+                    required
+                    className={emailError ? "border-red-500" : ""}
+                  />
+                  {emailError && (
+                    <p className="text-red-500 text-sm mt-1">{emailError}</p>
+                  )}
+                </Field>
+
+                <Field>
+                  <Label>
+                    Parol
+                    {form.id && (
+                      <span className="text-gray-400 text-sm ml-1">
+                        (bo'sh qoldirsa o'zgarmaydi)
+                      </span>
+                    )}
+                  </Label>
+                  <Input
+                    type="password"
+                    value={form.password}
+                    onChange={(e) => handlePasswordChange(e.target.value)}
+                    required={!form.id}
+                    className={passwordError ? "border-red-500" : ""}
+                  />
+                  {passwordError && (
+                    <p className="text-red-500 text-sm mt-1">{passwordError}</p>
+                  )}
+                </Field>
+
+                <Field>
+                  <Label>Ism Familiya</Label>
+                  <Input
+                    value={form.fullName}
+                    onChange={(e) =>
+                      setForm({ ...form, fullName: e.target.value })
+                    }
+                    required
+                  />
+                </Field>
+
+                <Field className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 p-2 rounded">
+                    <Label>Faol</Label>
+                    <input
+                      type="checkbox"
+                      checked={form.active}
+                      onChange={(e) =>
+                        setForm({ ...form, active: e.target.checked })
+                      }
+                    />
+                  </div>
+                </Field>
+              </FieldGroup>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="outline">Cancel</Button>
+                </DialogClose>
+                <Button type="submit">
+                  {form.id ? "Yangilash" : "Qo'shish"}
+                </Button>
+              </DialogFooter>
+            </form>
+          </DialogContent>
+        </Dialog>
+      </div>
+
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>ID</TableHead>
+            <TableHead>Email</TableHead>
+            <TableHead>Ism Familiya</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Harakatlar</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {users?.map((user) => (
+            <TableRow key={user.id}>
+              <TableCell>{user.id}</TableCell>
+              <TableCell>{user.email}</TableCell>
+              <TableCell>{user.fullName}</TableCell>
+              <TableCell>{user.active ? "Faol" : "Faol emas"}</TableCell>
+              <TableCell className="flex gap-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => handleEdit(user)}
+                >
+                  <Edit />
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => handleDelete(user.id)}
+                >
+                  <Trash />
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+};
+
+export default AdminCollegeDetail;
