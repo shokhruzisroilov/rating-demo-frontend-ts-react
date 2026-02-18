@@ -206,6 +206,7 @@ const AdminColleges = () => {
         </TableHeader>
         <TableBody>
           {colleges &&
+            Array.isArray(colleges) &&
             colleges.map((university) => (
               <TableRow key={university.id}>
                 <TableCell>{university.id}</TableCell>
