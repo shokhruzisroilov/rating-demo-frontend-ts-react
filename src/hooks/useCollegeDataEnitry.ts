@@ -17,7 +17,7 @@ import type {
   CollegeData,
   Document,
   DocumentStatusUpdateRequest,
-} from "@/types/CollegeDataEnitry";
+} from "@/types/collegeDataEnitry";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 // Pedagog kadrlar uchun hook

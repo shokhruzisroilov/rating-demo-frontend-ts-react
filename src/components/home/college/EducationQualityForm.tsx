@@ -1,7 +1,7 @@
 
 
 import { useEducationQuality } from "@/hooks/useCollegeDataEnitry";
-import { educationQualitySchema, type CollegeData, type EducationQualityFormData } from "@/types/CollegeDataEnitry";
+import { educationQualitySchema, type CollegeData, type EducationQualityFormData } from "@/types/collegeDataEnitry";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";

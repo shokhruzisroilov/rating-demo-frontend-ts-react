@@ -10,7 +10,7 @@ import type {
   CollegeData,
   Document,
   DocumentStatusUpdateRequest,
-} from "@/types/CollegeDataEnitry";
+} from "@/types/collegeDataEnitry";
 import api from "./api";
 
 // Pedagog kadrlar ma'lumotlarini kiritish

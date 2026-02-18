@@ -3,7 +3,7 @@ import {
   studentAchievementSchema,
   type CollegeData,
   type StudentAchievementFormData,
-} from "@/types/CollegeDataEnitry";
+} from "@/types/collegeDataEnitry";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
