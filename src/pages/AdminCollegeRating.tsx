@@ -124,28 +124,27 @@ const AdminCollegeRating = () => {
 
   // ====== Vocational indicators mapping ======
   const vocationalIndicatorsMap: Record<string, string> = {
-    indicator1_weighted: "Ilmiy daraja (unvon)ga ega o‘qituvchilar ulushi",
-    indicator2_weighted:
-      "Ishlab chiqarish tajribasiga ega o‘qituvchilar ulushi",
-    indicator3_weighted: "O‘qituvchilarning malaka oshirish ko‘rsatkichi",
-    indicator4_weighted: "O‘quv-uslubiy majmualar bilan ta’minlanganlik",
-    indicator5_weighted: "O‘quv binolari va jihozlar bilan ta’minlanganlik",
-    indicator6_weighted: "Axborot-resurs markazi bilan ta’minlanganlik",
-    indicator7_weighted: "Talabalarning sport va ijtimoiy infratuzilmasi",
-    indicator8_weighted: "Yotoqxona bilan ta’minlanganlik",
-    indicator9_weighted: "Talabalarning ta’lim sifatidan qoniqish darajasi",
-    indicator10_weighted: "Bitiruvchilarning bandlik holati",
-    indicator11_weighted: "Bitiruvchilarning ishga joylashish muddati",
-    indicator12_weighted: "Ish beruvchilar o‘rtasidagi bitiruvchilar nufuzi",
-    indicator13_weighted: "Amaliyot bazalari bilan hamkorlik",
-    indicator14_weighted: "Dual ta’limga jalb qilingan talabalar ulushi",
-    indicator15_weighted: "Xalqaro hamkorlik va loyihalarda ishtirok",
-    indicator16_weighted: "Grant va loyihalarga jalb etilgan mablag‘lar",
-    indicator17_weighted: "Innovatsion faoliyat va startap loyihalar",
-    indicator18_weighted:
-      "Professional ko‘nikmalar sertifikatlariga ega talabalar ulushi",
-    indicator19_weighted: "Ko‘nikmalar va kasbiy kompetensiyalar",
-    indicator20_weighted: "Raqamli texnologiyalar bilan ta’minlanganlik",
+    I11: "Ilmiy daraja (unvon)ga ega o‘qituvchilar ulushi",
+    I12: "Ishlab chiqarish tajribasiga ega o‘qituvchilar ulushi",
+    I13: "O‘qituvchilarning malaka oshirish ko‘rsatkichi",
+    I14: "O‘quv-uslubiy majmualar bilan ta’minlanganlik",
+    I15: "O‘quv binolari va jihozlar bilan ta’minlanganlik",
+    I16: "Axborot-resurs markazi bilan ta’minlanganlik",
+    I17: "Talabalarning sport va ijtimoiy infratuzilmasi",
+
+    I21: "Yotoqxona bilan ta’minlanganlik",
+    I22: "Talabalarning ta’lim sifatidan qoniqish darajasi",
+    I23: "Bitiruvchilarning bandlik holati",
+    I24: "Bitiruvchilarning ishga joylashish muddati",
+    I25: "Ish beruvchilar o‘rtasidagi bitiruvchilar nufuzi",
+
+    I31: "Amaliyot bazalari bilan hamkorlik",
+    I32: "Dual ta’limga jalb qilingan talabalar ulushi",
+    I33: "Xalqaro hamkorlik va loyihalarda ishtirok",
+    I34: "Grant va loyihalarga jalb etilgan mablag‘lar",
+
+    I41: "Innovatsion faoliyat va startap loyihalar",
+    I42: "Professional ko‘nikmalar sertifikatlariga ega talabalar ulushi",
   };
 
   // ====== Sorted ratings ======

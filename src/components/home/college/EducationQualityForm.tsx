@@ -113,56 +113,56 @@ const EducationQualityForm: React.FC<EducationQualityFormProps> = ({
               disabled
             />
             <LabeledInputWithInfo
-              label="D1 – axborot-resurs markazidagi kitoblar soni"
+              label="D1 – o‘quv rejalaridagi auditoriya yuklamalari (soatlar) miqdori"
               type="number"
               step="any"
               {...register("d1")}
               error={errors.d1?.message}
             />
             <LabeledInputWithInfo
-              label="D2 – xorijiy nashrlar soni"
+              label="D2 – sababsiz qoldirilgan auditoriya soatlari"
               type="number"
               step="any"
               {...register("d2")}
               error={errors.d2?.message}
             />
             <LabeledInputWithInfo
-              label="Qsum – o‘quv rejasidagi umumiy o‘quv soatlari yig'indisi"
+              label="Q1…Qn – har bir kasb va mutaxassislik bo‘yicha qabul parametrining bajarilish ko‘rsatkichi"
               type="number"
               step="any"
               {...register("qSum")}
               error={errors.qSum?.message}
             />
             <LabeledInputWithInfo
-              label="N – o‘quv rejasidagi fanlar soni"
+              label="n – kasb va mutaxassisliklar soni"
               type="number"
               step="any"
               {...register("n")}
               error={errors.n?.message}
             />
             <LabeledInputWithInfo
-              label="O5 – o‘qishga qabul qilingan talabalar soni"
+              label="Oʻ5 – xalqaro yoki qo‘shma ta’lim dasturida tahsil olayotgan o‘quvchilar soni"
               type="number"
               step="any"
               {...register("o5")}
               error={errors.o5?.message}
             />
             <LabeledInputWithInfo
-              label="P18 – pedagog kadrlarning kompyuter texnikasi bilan ta'minlanganlik darajasi"
+              label="P18 – xalqaro va qo‘shma dasturlar soni"
               type="number"
               step="any"
               {...register("p18")}
               error={errors.p18?.message}
             />
             <LabeledInputWithInfo
-              label="Pmax – pedagog kadrlarning kompyuter texnikasi bilan ta'minlanganlik maksimal darajasi"
+              label="Pmax – eng ko‘p xalqaro dasturga ega ta’lim tashkilotidagi dasturlar soni"
               type="number"
               step="any"
               {...register("pMax")}
               error={errors.pMax?.message}
             />
             <LabeledInputWithInfo
-              label="O – umumiy talabalar soni"
+              label="Oʻ – jami tahsil olayotgan o‘quvchilar soni"
               type="number"
               step="any"
               {...register("o")}
