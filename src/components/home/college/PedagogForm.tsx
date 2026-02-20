@@ -115,126 +115,126 @@ const PedagogForm: React.FC<PedagogFormProps> = ({
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <LabeledInputWithInfo
-              label="P1 – asosiy shtat va ichki o'rindosh sifatida mehnat faoliyatini olib boruvchi pedagog kadrlar soni"
+              label="P1 – ilmiy daraja (unvon)ga ega pedagoglar soni"
               type="number"
               step="any"
               {...register("p1")}
               error={errors.p1?.message}
             />
             <LabeledInputWithInfo
-              label="P2 – asosiy shtat va ichki o'rindosh sifatida mehnat faoliyatini olib boruvchi DSc (fan doktori) ilmiy daraja yoki professor unvoniga ega pedagog kadrlar soni"
+              label="P2 – xorijiy davlat fuqarosi hisoblangan pedagoglar soni"
               type="number"
               step="any"
               {...register("p2")}
               error={errors.p2?.message}
             />
             <LabeledInputWithInfo
-              label="P3 – asosiy shtat va ichki o'rindosh sifatida mehnat faoliyatini olib boruvchi PhD (fan nomzodi) ilmiy daraja yoki dotsent unvoniga ega pedagog kadrlar soni"
+              label="P3 – “TOP-1000” xorijiy OTM diplomiga ega pedagoglar soni"
               type="number"
               step="any"
               {...register("p3")}
               error={errors.p3?.message}
             />
             <LabeledInputWithInfo
-              label="P4 – asosiy shtat va ichki o'rindosh sifatida mehnat faoliyatini olib boruvchi tayanch doktorantura va doktoranturaga kirish imtihonlaridan muvaffaqiyatli o‘tgan va tavsiya etilganlar soni"
+              label="P4 – bosh o‘qituvchi pedagoglar soni"
               type="number"
               step="any"
               {...register("p4")}
               error={errors.p4?.message}
             />
             <LabeledInputWithInfo
-              label="P5 – asosiy shtat va ichki o'rindosh sifatida mehnat faoliyatini olib boruvchi mustaqil izlanuvchilar soni"
+              label="P5 – yetakchi o‘qituvchi pedagoglar va 1-2 toifali ishlab chiqarish ta’lim ustalari soni"
               type="number"
               step="any"
               {...register("p5")}
               error={errors.p5?.message}
             />
             <LabeledInputWithInfo
-              label="P6 – asosiy shtat va ichki o'rindosh sifatida mehnat faoliyatini olib boruvchi tayanch doktorantlar soni"
+              label="P6 – katta o‘qituvchi pedagoglar soni"
               type="number"
               step="any"
               {...register("p6")}
               error={errors.p6?.message}
             />
             <LabeledInputWithInfo
-              label="P7 – asosiy shtat va ichki o'rindosh sifatida mehnat faoliyatini olib boruvchi doktorantlar soni"
+              label="P7 – respublika hududida malaka oshirgan ishlab chiqarish ta’lim ustalari soni"
               type="number"
               step="any"
               {...register("p7")}
               error={errors.p7?.message}
             />
             <LabeledInputWithInfo
-              label="P8 – falsafa doktori (PhD) va fan doktori (DSc) ilmiy darajalarini olish bo'yicha doktorlik dissertatsiyasini himoya qilgan izlanuvchilar soni"
+              label="P8 – respublika hududida malaka oshirish va stajirovkada qatnashgan umumta’lim, umumkasbiy va maxsus fan pedagoglari soni"
               type="number"
               step="any"
               {...register("p8")}
               error={errors.p8?.message}
             />
             <LabeledInputWithInfo
-              label="P9 – chet tillarni o‘rganish bo‘yicha B1, B2 darajadagi sertifikatga ega pedagog kadrlar soni"
+              label="P9 – xorijda malaka oshirish yoki stajirovkada qatnashgan pedagoglar soni"
               type="number"
               step="any"
               {...register("p9")}
               error={errors.p9?.message}
             />
             <LabeledInputWithInfo
-              label="P10 – chet tillarni o‘rganish bo‘yicha C1, C2 darajadagi sertifikatga ega pedagog kadrlar soni"
+              label="P10 – xorijga malaka oshirish uchun yuborilgan ishlab chiqarish ta’lim ustalari soni"
               type="number"
               step="any"
               {...register("p10")}
               error={errors.p10?.message}
             />
             <LabeledInputWithInfo
-              label="P11 – xalqaro tan olingan sertifikatlarga ega pedagog kadrlar soni (IELTS, TOEFL, SAT, GRE, GMAT, DELE, DALF, TestDaf, HSK va boshqalar)"
+              label="P11 – xorijga yuborilgan maxsus fan pedagoglari soni"
               type="number"
               step="any"
               {...register("p11")}
               error={errors.p11?.message}
             />
             <LabeledInputWithInfo
-              label="P12 – pedagog kadrlarning malaka oshirish va qayta tayyorlash kurslaridan o‘tganlar soni"
+              label="P12 – xorijga yuborilgan umumta’lim fan pedagoglari soni"
               type="number"
               step="any"
               {...register("p12")}
               error={errors.p12?.message}
             />
             <LabeledInputWithInfo
-              label="P13 – darsligi va o‘quv qo‘llanmalari nashr etilgan pedagog kadrlar soni"
+              label="P13 – xalqaro sertifikatga ega pedagoglar soni"
               type="number"
               step="any"
               {...register("p13")}
               error={errors.p13?.message}
             />
             <LabeledInputWithInfo
-              label="P14 – xalqaro va xorijiy grantlar va loyihalarda ishtirok etgan pedagog kadrlar soni"
+              label="P14 – milliy sertifikatga ega pedagoglar soni"
               type="number"
               step="any"
               {...register("p14")}
               error={errors.p14?.message}
             />
             <LabeledInputWithInfo
-              label="P15 – ish beruvchilar tomonidan o‘tkazilgan so‘rovnomada qatnashgan ish beruvchilar soni"
+              label="P15 – tashqi o‘rindosh sifatida jalb qilingan soha mutaxassislari soni"
               type="number"
               step="any"
               {...register("p15")}
               error={errors.p15?.message}
             />
             <LabeledInputWithInfo
-              label="P16 – so‘rovnomada pedagog kadrlarning tayyorgarlik darajasiga yuqori baho bergan ish beruvchilar soni"
+              label="P16 – tashqi o‘rindosh xorijiy pedagoglar soni"
               type="number"
               step="any"
               {...register("p16")}
               error={errors.p16?.message}
             />
             <LabeledInputWithInfo
-              label="P17 – so‘rovnomada pedagog kadrlarning tayyorgarlik darajasiga o‘rta baho bergan ish beruvchilar soni"
+              label="P17 – tashqi o‘rindosh OTM professor-o‘qituvchilari soni"
               type="number"
               step="any"
               {...register("p17")}
               error={errors.p17?.message}
             />
             <LabeledInputWithInfo
-              label="P – umumiy pedagog kadrlar soni"
+              label="P – asosiy shtat va ichki o‘rindosh sifatida mehnat faoliyatini olib boruvchi pedagoglar soni"
               type="number"
               step="any"
               {...register("p")}
