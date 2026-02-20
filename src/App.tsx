@@ -16,6 +16,7 @@ import Dashboard from "./pages/Dashboard";
 import { useAuthStore } from "./store/authStore";
 import AdminColleges from "./pages/AdminColleges";
 import AdminCollegeDetail from "./pages/AdminCollegeDetail";
+import AdminCollegeRating from "./pages/AdminCollegeRating";
 
 function App() {
   const queryClient = new QueryClient();
@@ -51,6 +52,10 @@ function App() {
                 <>
                   <Route index element={<Dashboard />} />
                   <Route path="/universities-rating" element={<AdminHome />} />
+                  <Route
+                    path="/colleges-rating"
+                    element={<AdminCollegeRating />}
+                  />
                   <Route path="/universities" element={<AdminUniversities />} />
                   <Route path="/colleges" element={<AdminColleges />} />
                   <Route
