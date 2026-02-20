@@ -24,7 +24,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useRatingPeriods } from "@/hooks/useRatingPeriods.ts";
-import { useCalculateRatings } from "@/hooks/useRatings";
+import { useCalculateVocationalRatings } from "@/hooks/useRatings";
 import { useEffect, useState } from "react";
 
 interface SelectedPeriod {
@@ -34,7 +34,7 @@ interface SelectedPeriod {
 
 type SortDirection = "asc" | "desc";
 
-const AdminHome = () => {
+const AdminCollegeRating = () => {
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
   const [selectedPeriod, setSelectedPeriod] = useState<SelectedPeriod | null>(
     null,
@@ -54,14 +54,14 @@ const AdminHome = () => {
     mutate: calculateRatings,
     data: ratings,
     error: ratingsError,
-  } = useCalculateRatings();
+  } = useCalculateVocationalRatings();
 
   // ====== Sorting ======
   const [sortKey, setSortKey] = useState<string | null>(null);
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
 
   const handleSort = (key: string) => {
-    if (["rank", "universityName", "compositeScore"].includes(key)) {
+    if (["rank", "collegeName", "compositeScore"].includes(key)) {
       if (sortKey === key) {
         setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"));
       } else {
@@ -73,7 +73,7 @@ const AdminHome = () => {
 
     // Display name orqali backend keyni topish
     const reverseMap = Object.fromEntries(
-      Object.entries(indicatorsMap).map(([k, v]) => [v, k]),
+      Object.entries(vocationalIndicatorsMap).map(([k, v]) => [v, k]),
     );
     const actualKey = reverseMap[key] || key;
 
@@ -87,12 +87,12 @@ const AdminHome = () => {
 
   // ====== localStorage ======
   useEffect(() => {
-    const stored = localStorage.getItem("selectedAcademicYear");
+    const stored = localStorage.getItem("selectedVocationalPeriod");
     if (stored) {
       try {
         setSelectedPeriod(JSON.parse(stored));
       } catch {
-        localStorage.removeItem("selectedAcademicYear");
+        localStorage.removeItem("selectedVocationalPeriod");
         setShowWelcomeModal(true);
       }
     } else {
@@ -107,7 +107,7 @@ const AdminHome = () => {
 
     const selected = { id: period.id, name: period.name };
     setSelectedPeriod(selected);
-    localStorage.setItem("selectedAcademicYear", JSON.stringify(selected));
+    localStorage.setItem("selectedVocationalPeriod", JSON.stringify(selected));
     setShowWelcomeModal(false);
   };
 
@@ -122,50 +122,30 @@ const AdminHome = () => {
   if (periodsLoading) return <p>Davrlar yuklanmoqda...</p>;
   if (periodsError) return <p>Davrlarni yuklashda xatolik</p>;
 
-  // ====== Static indicators mapping ======
-  const indicatorsMap: Record<string, string> = {
-    indicator1_weighted:
-      "Ilmiy daraja (unvon)ga ega professor-oʻqituvchilar ulushi",
+  // ====== Vocational indicators mapping ======
+  const vocationalIndicatorsMap: Record<string, string> = {
+    indicator1_weighted: "Ilmiy daraja (unvon)ga ega o‘qituvchilar ulushi",
     indicator2_weighted:
-      "Ilmiy darajaga ega bo‘lgan professor-o‘qituvchilar o‘rtacha yoshi*",
-    indicator3_weighted:
-      "Xorijiy oliy taʼlim tashkilotlarida olingan ilmiy daraja va magistratura diplomlariga ega professor-oʻqituvchilar ulushi",
-    indicator4_weighted:
-      "Taʼlim va ilmiy jarayonlarga jalb qilingan xorijiy professor-oʻqituvchilar ulushi",
-    indicator5_weighted:
-      "Professor-oʻqituvchilar sonining talabalar soniga nisbati",
-    indicator6_weighted:
-      "Scopus maʼlumotlar bazasining indekslanuvchi jurnallarida nashr etilgan maqolalar",
-    indicator7_weighted:
-      "Xalqaro maʼlumotlar bazalarida iqtiboslik koʻrsatkichi",
-    indicator8_weighted:
-      "Professor-oʻqituvchilarning “Xirsh” indeksi (h-index)",
-    indicator9_weighted:
-      "Ixtiro, foydali model, sanoat namunalari va seleksiya yutuqlari uchun patentlar ulushi",
-    indicator10_weighted: "Scopus maʼlumotlar bazasida qayd etilgan patentlar",
-    indicator10_1_weighted:
-      "Oliy ta’lim tashkilotining spin-off korxonalari faoliyati",
-    indicator10_2_weighted:
-      "Ilm-fan va innovatsiyani rivojlantirishga yo‘naltirilgan mablag‘lar",
-    indicator11_weighted: "Jalb etilgan mablagʻlar",
-    indicator12_weighted:
-      "Oliy ta’limdan keyingi ta’lim boʻyicha kadrlar tayyorlash samaradorligi",
-    indicator13_weighted:
-      "Xorijiy davlat fuqarosi hisoblangan talabalar ulushi",
-    indicator14_weighted: "Talabalarning xalqaro akademik mobilligi",
-    indicator15_weighted:
-      "Professor-oʻqituvchilarning xalqaro akademik mobilligi",
-    indicator16_weighted:
-      "Xorijiy oliy ta’lim tashkilotlar bilan tashkil etilgan qoʻshma taʼlim dasturlari samaradorligi",
-    indicator17_weighted: "Bitiruvchilarning bandlik holati",
-    indicator18_weighted: "Bitiruvchilarning ishga joylashish muddati",
-    indicator19_weighted:
-      "Ijtimoiy muhit va talabalarga yaratilgan shart-sharoitlar",
-    indicator20_weighted: "Talabalarning taʼlim sifatidan qoniqish darajasi ",
-    indicator21_weighted: "Professor-oʻqituvchilar uchun yaratilgan sharoitlar",
-    indicator22_weighted: "Ish beruvchilar oʻrtasidagi bitiruvchilar nufuzi ",
-    indicator23_weighted:
-      "Oliy taʼlim tashkilotlarida taʼlim va boshqaruv faoliyatini raqamlashtirish",
+      "Ishlab chiqarish tajribasiga ega o‘qituvchilar ulushi",
+    indicator3_weighted: "O‘qituvchilarning malaka oshirish ko‘rsatkichi",
+    indicator4_weighted: "O‘quv-uslubiy majmualar bilan ta’minlanganlik",
+    indicator5_weighted: "O‘quv binolari va jihozlar bilan ta’minlanganlik",
+    indicator6_weighted: "Axborot-resurs markazi bilan ta’minlanganlik",
+    indicator7_weighted: "Talabalarning sport va ijtimoiy infratuzilmasi",
+    indicator8_weighted: "Yotoqxona bilan ta’minlanganlik",
+    indicator9_weighted: "Talabalarning ta’lim sifatidan qoniqish darajasi",
+    indicator10_weighted: "Bitiruvchilarning bandlik holati",
+    indicator11_weighted: "Bitiruvchilarning ishga joylashish muddati",
+    indicator12_weighted: "Ish beruvchilar o‘rtasidagi bitiruvchilar nufuzi",
+    indicator13_weighted: "Amaliyot bazalari bilan hamkorlik",
+    indicator14_weighted: "Dual ta’limga jalb qilingan talabalar ulushi",
+    indicator15_weighted: "Xalqaro hamkorlik va loyihalarda ishtirok",
+    indicator16_weighted: "Grant va loyihalarga jalb etilgan mablag‘lar",
+    indicator17_weighted: "Innovatsion faoliyat va startap loyihalar",
+    indicator18_weighted:
+      "Professional ko‘nikmalar sertifikatlariga ega talabalar ulushi",
+    indicator19_weighted: "Ko‘nikmalar va kasbiy kompetensiyalar",
+    indicator20_weighted: "Raqamli texnologiyalar bilan ta’minlanganlik",
   };
 
   // ====== Sorted ratings ======
@@ -178,9 +158,9 @@ const AdminHome = () => {
     if (sortKey === "rank") {
       aValue = a.rank;
       bValue = b.rank;
-    } else if (sortKey === "universityName") {
-      aValue = a.universityName;
-      bValue = b.universityName;
+    } else if (sortKey === "collegeName") {
+      aValue = a.collegeName;
+      bValue = b.collegeName;
     } else if (sortKey === "compositeScore") {
       aValue = a.compositeScore;
       bValue = b.compositeScore;
@@ -246,7 +226,7 @@ const AdminHome = () => {
 
       {/* ====== Header ====== */}
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Universitetlar reytinglari</h1>
+        <h1 className="text-2xl font-bold">Kollejlar reytinglari</h1>
 
         <div className="flex items-center gap-3">
           {periodId && (
@@ -283,13 +263,13 @@ const AdminHome = () => {
 
               <TableHead
                 className="cursor-pointer"
-                onClick={() => handleSort("universityName")}
+                onClick={() => handleSort("collegeName")}
               >
-                Oliy ta'lim tashkiloti
-                <SortIcon active={sortKey === "universityName"} />
+                Kollej nomi
+                <SortIcon active={sortKey === "collegeName"} />
               </TableHead>
 
-              {Object.entries(indicatorsMap).map(
+              {Object.entries(vocationalIndicatorsMap).map(
                 ([backendKey, displayName]) => (
                   <TableHead
                     key={backendKey}
@@ -315,12 +295,12 @@ const AdminHome = () => {
           <TableBody>
             {sortedRatings.length ? (
               sortedRatings.map((item) => (
-                <TableRow key={item.universityId} className="hover:bg-muted/50">
+                <TableRow key={item.collegeId} className="hover:bg-muted/50">
                   <TableCell className="text-center">{item.rank}</TableCell>
 
-                  <TableCell>{item.universityName}</TableCell>
+                  <TableCell>{item.collegeName}</TableCell>
 
-                  {Object.keys(indicatorsMap).map((key) => (
+                  {Object.keys(vocationalIndicatorsMap).map((key) => (
                     <TableCell key={key} className="text-center">
                       {item.weightedScores[key]}
                     </TableCell>
@@ -334,7 +314,7 @@ const AdminHome = () => {
             ) : (
               <TableRow>
                 <TableCell
-                  colSpan={Object.keys(indicatorsMap).length + 3}
+                  colSpan={Object.keys(vocationalIndicatorsMap).length + 3}
                   className="h-24 text-center"
                 >
                   Maʼlumot topilmadi
@@ -346,10 +326,10 @@ const AdminHome = () => {
           <TableFooter>
             <TableRow>
               <TableCell
-                colSpan={Object.keys(indicatorsMap).length + 3}
+                colSpan={Object.keys(vocationalIndicatorsMap).length + 3}
                 className="text-right"
               >
-                Jami universitetlar: {sortedRatings.length}
+                Jami kollejlar: {sortedRatings.length}
               </TableCell>
             </TableRow>
           </TableFooter>
@@ -359,4 +339,4 @@ const AdminHome = () => {
   );
 };
 
-export default AdminHome;
+export default AdminCollegeRating;
