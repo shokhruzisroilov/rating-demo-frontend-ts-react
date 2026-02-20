@@ -124,27 +124,27 @@ const AdminCollegeRating = () => {
 
   // ====== Vocational indicators mapping ======
   const vocationalIndicatorsMap: Record<string, string> = {
-    I11: "Ilmiy daraja (unvon)ga ega o‘qituvchilar ulushi",
-    I12: "Ishlab chiqarish tajribasiga ega o‘qituvchilar ulushi",
-    I13: "O‘qituvchilarning malaka oshirish ko‘rsatkichi",
-    I14: "O‘quv-uslubiy majmualar bilan ta’minlanganlik",
-    I15: "O‘quv binolari va jihozlar bilan ta’minlanganlik",
-    I16: "Axborot-resurs markazi bilan ta’minlanganlik",
-    I17: "Talabalarning sport va ijtimoiy infratuzilmasi",
+    I11: "I1.1 - Ilmiy daraja (unvon)ga ega va xorijiy pedagoglar ulushi.",
+    I12: "I1.2 - Pedagoglar toifasi bo'yicha tarkibi.",
+    I13: "I1.3 - Malaka oshirgan pedagoglar ulushi.",
+    I14: "I1.4 - Xorijga malaka oshirishga yuborilgan pedagoglar ulushi.",
+    I15: "I1.5 - Xorijiy til sertifikatiga ega pedagoglar ulushi.",
+    I16: "I1.6 - Umummilliy so'rovnoma natijasi.",
+    I17: "I1.7 - Tashqi o'rindosh pedagoglar ulushi.",
 
-    I21: "Yotoqxona bilan ta’minlanganlik",
-    I22: "Talabalarning ta’lim sifatidan qoniqish darajasi",
-    I23: "Bitiruvchilarning bandlik holati",
-    I24: "Bitiruvchilarning ishga joylashish muddati",
-    I25: "Ish beruvchilar o‘rtasidagi bitiruvchilar nufuzi",
+    I21: "I2.1 - Moddiy-texnika bazasi bahosi.",
+    I22: "I2.2 - Umummilliy so'rovnoma natijasi.",
+    I23: "I2.3 - Dars davomati ko'rsatkichi.",
+    I24: "I2.4 - Qabul parametrlarining bajarilishi.",
+    I25: "I2.5 - Xalqaro va qo'shma ta'lim dasturlari.",
 
-    I31: "Amaliyot bazalari bilan hamkorlik",
-    I32: "Dual ta’limga jalb qilingan talabalar ulushi",
-    I33: "Xalqaro hamkorlik va loyihalarda ishtirok",
-    I34: "Grant va loyihalarga jalb etilgan mablag‘lar",
+    I31: "I3.1 - Umummilliy so'rovnoma natijasi.",
+    I32: "I3.2 - Daromad ko'rsatkichi.",
+    I33: "I3.3 - Dual ta'lim ulushi.",
+    I34: "I3.4 - Bitiruvchilar bandligi.",
 
-    I41: "Innovatsion faoliyat va startap loyihalar",
-    I42: "Professional ko‘nikmalar sertifikatlariga ega talabalar ulushi",
+    I41: "I4.1 - Kasbiy tanlovlar va olimpiadalar g'oliblari.",
+    I42: "I4.2 - Xorijiy til sertifikatiga ega o'quvchilar ulushi.",
   };
 
   // ====== Sorted ratings ======
