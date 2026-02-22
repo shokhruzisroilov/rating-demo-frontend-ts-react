@@ -181,161 +181,163 @@ const AdminCollegeRating = () => {
   );
 
   return (
-    <div className="w-full max-w-[84vw]">
-      {/* ====== Select Period Modal ====== */}
-      <Dialog open={showWelcomeModal} onOpenChange={setShowWelcomeModal}>
-        <DialogContent className="sm:max-w-md rounded-4xl">
-          <DialogHeader className="flex flex-col items-center gap-2">
-            <InfoCircle width={64} height={64} />
-            <DialogTitle className="my-4 text-[24px] font-bold">
-              O‘quv davrini tanlang
-            </DialogTitle>
-          </DialogHeader>
+		<div className='w-full max-w-[84vw]'>
+			{/* ====== Select Period Modal ====== */}
+			<Dialog open={showWelcomeModal} onOpenChange={setShowWelcomeModal}>
+				<DialogContent className='sm:max-w-md rounded-4xl'>
+					<DialogHeader className='flex flex-col items-center gap-2'>
+						<InfoCircle width={64} height={64} />
+						<DialogTitle className='my-4 text-[24px] font-bold'>
+							O‘quv davrini tanlang
+						</DialogTitle>
+					</DialogHeader>
 
-          <Select
-            value={selectedPeriod?.id?.toString() ?? ""}
-            onValueChange={(val) => handleSelectYear(Number(val))}
-          >
-            <SelectTrigger className="w-full bg-[#F4F6FC] rounded-xl py-6">
-              <SelectValue placeholder="O‘quv yilini tanlang" />
-            </SelectTrigger>
+					<Select
+						value={selectedPeriod?.id?.toString() ?? ''}
+						onValueChange={val => handleSelectYear(Number(val))}
+					>
+						<SelectTrigger className='w-full bg-[#F4F6FC] rounded-xl py-6'>
+							<SelectValue placeholder='O‘quv yilini tanlang' />
+						</SelectTrigger>
 
-            <SelectContent className="bg-[#F4F6FC]">
-              {ratingPeriods
-                ?.filter((period) => period.status === "ACTIVE")
-                ?.map((period) => (
-                  <SelectItem key={period.id} value={period.id.toString()}>
-                    {period.name}
-                  </SelectItem>
-                ))}
-            </SelectContent>
-          </Select>
+						<SelectContent className='bg-[#F4F6FC]'>
+							{ratingPeriods
+								?.filter(period => period.status === 'ACTIVE')
+								?.map(period => (
+									<SelectItem key={period.id} value={period.id.toString()}>
+										{period.name}
+									</SelectItem>
+								))}
+						</SelectContent>
+					</Select>
 
-          <Button
-            onClick={() =>
-              selectedPeriod && handleSelectYear(selectedPeriod.id)
-            }
-            disabled={!selectedPeriod}
-            className="mt-8 h-13 rounded-xl bg-[#4076FF]"
-          >
-            Saqlash
-          </Button>
-        </DialogContent>
-      </Dialog>
+					<Button
+						onClick={() =>
+							selectedPeriod && handleSelectYear(selectedPeriod.id)
+						}
+						disabled={!selectedPeriod}
+						className='mt-8 h-13 rounded-xl bg-[#4076FF]'
+					>
+						Saqlash
+					</Button>
+				</DialogContent>
+			</Dialog>
 
-      {/* ====== Header ====== */}
-      <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Kollejlar reytinglari</h1>
+			{/* ====== Header ====== */}
+			<div className='mb-6 flex items-center justify-between'>
+				<h1 className='text-2xl font-bold'>
+					Kasbiy ta'lim tashkilotlar reytingi
+				</h1>
 
-        <div className="flex items-center gap-3">
-          {periodId && (
-            <Button
-              variant="outline"
-              className="h-13 rounded-xl bg-[#F4F6FC]"
-              onClick={() => setShowWelcomeModal(true)}
-            >
-              O‘quv davri:
-              <strong className="ml-1">{selectedPeriod?.name}</strong>
-              <EditIcon className="ml-2 h-5 w-5" />
-            </Button>
-          )}
-        </div>
-      </div>
+				<div className='flex items-center gap-3'>
+					{periodId && (
+						<Button
+							variant='outline'
+							className='h-13 rounded-xl bg-[#F4F6FC]'
+							onClick={() => setShowWelcomeModal(true)}
+						>
+							O‘quv davri:
+							<strong className='ml-1'>{selectedPeriod?.name}</strong>
+							<EditIcon className='ml-2 h-5 w-5' />
+						</Button>
+					)}
+				</div>
+			</div>
 
-      {/* ====== Error ====== */}
-      {ratingsError && (
-        <p className="mb-4 text-red-500">
-          Xatolik: {(ratingsError as Error).message}
-        </p>
-      )}
+			{/* ====== Error ====== */}
+			{ratingsError && (
+				<p className='mb-4 text-red-500'>
+					Xatolik: {(ratingsError as Error).message}
+				</p>
+			)}
 
-      {ratings && ratings.length > 0 && (
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead
-                className="text-center cursor-pointer"
-                onClick={() => handleSort("rank")}
-              >
-                T/r <SortIcon active={sortKey === "rank"} />
-              </TableHead>
+			{ratings && ratings.length > 0 && (
+				<Table>
+					<TableHeader>
+						<TableRow>
+							<TableHead
+								className='text-center cursor-pointer'
+								onClick={() => handleSort('rank')}
+							>
+								T/r <SortIcon active={sortKey === 'rank'} />
+							</TableHead>
 
-              <TableHead
-                className="cursor-pointer"
-                onClick={() => handleSort("collegeName")}
-              >
-                Kollej nomi
-                <SortIcon active={sortKey === "collegeName"} />
-              </TableHead>
+							<TableHead
+								className='cursor-pointer'
+								onClick={() => handleSort('collegeName')}
+							>
+								Kollej nomi
+								<SortIcon active={sortKey === 'collegeName'} />
+							</TableHead>
 
-              {Object.entries(vocationalIndicatorsMap).map(
-                ([backendKey, displayName]) => (
-                  <TableHead
-                    key={backendKey}
-                    className="text-center cursor-pointer"
-                    onClick={() => handleSort(backendKey)}
-                  >
-                    {displayName}
-                    <SortIcon active={sortKey === backendKey} />
-                  </TableHead>
-                ),
-              )}
+							{Object.entries(vocationalIndicatorsMap).map(
+								([backendKey, displayName]) => (
+									<TableHead
+										key={backendKey}
+										className='text-center cursor-pointer'
+										onClick={() => handleSort(backendKey)}
+									>
+										{displayName}
+										<SortIcon active={sortKey === backendKey} />
+									</TableHead>
+								),
+							)}
 
-              <TableHead
-                className="text-center cursor-pointer"
-                onClick={() => handleSort("compositeScore")}
-              >
-                Umumiy ball
-                <SortIcon active={sortKey === "compositeScore"} />
-              </TableHead>
-            </TableRow>
-          </TableHeader>
+							<TableHead
+								className='text-center cursor-pointer'
+								onClick={() => handleSort('compositeScore')}
+							>
+								Umumiy ball
+								<SortIcon active={sortKey === 'compositeScore'} />
+							</TableHead>
+						</TableRow>
+					</TableHeader>
 
-          <TableBody>
-            {sortedRatings.length ? (
-              sortedRatings.map((item) => (
-                <TableRow key={item.collegeId} className="hover:bg-muted/50">
-                  <TableCell className="text-center">{item.rank}</TableCell>
+					<TableBody>
+						{sortedRatings.length ? (
+							sortedRatings.map(item => (
+								<TableRow key={item.collegeId} className='hover:bg-muted/50'>
+									<TableCell className='text-center'>{item.rank}</TableCell>
 
-                  <TableCell>{item.collegeName}</TableCell>
+									<TableCell>{item.collegeName}</TableCell>
 
-                  {Object.keys(vocationalIndicatorsMap).map((key) => (
-                    <TableCell key={key} className="text-center">
-                      {item.weightedScores[key]}
-                    </TableCell>
-                  ))}
+									{Object.keys(vocationalIndicatorsMap).map(key => (
+										<TableCell key={key} className='text-center'>
+											{item.weightedScores[key]}
+										</TableCell>
+									))}
 
-                  <TableCell className="text-center font-semibold">
-                    {item.compositeScore}
-                  </TableCell>
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={Object.keys(vocationalIndicatorsMap).length + 3}
-                  className="h-24 text-center"
-                >
-                  Maʼlumot topilmadi
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
+									<TableCell className='text-center font-semibold'>
+										{item.compositeScore}
+									</TableCell>
+								</TableRow>
+							))
+						) : (
+							<TableRow>
+								<TableCell
+									colSpan={Object.keys(vocationalIndicatorsMap).length + 3}
+									className='h-24 text-center'
+								>
+									Maʼlumot topilmadi
+								</TableCell>
+							</TableRow>
+						)}
+					</TableBody>
 
-          <TableFooter>
-            <TableRow>
-              <TableCell
-                colSpan={Object.keys(vocationalIndicatorsMap).length + 3}
-                className="text-right"
-              >
-                Jami kollejlar: {sortedRatings.length}
-              </TableCell>
-            </TableRow>
-          </TableFooter>
-        </Table>
-      )}
-    </div>
-  );
+					<TableFooter>
+						<TableRow>
+							<TableCell
+								colSpan={Object.keys(vocationalIndicatorsMap).length + 3}
+								className='text-right'
+							>
+								Jami kollejlar: {sortedRatings.length}
+							</TableCell>
+						</TableRow>
+					</TableFooter>
+				</Table>
+			)}
+		</div>
+	)
 };
 
 export default AdminCollegeRating;

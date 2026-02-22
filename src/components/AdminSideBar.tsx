@@ -103,7 +103,7 @@ const AdminSideBar = () => {
             }
           >
             <GraduationCap size={20} />
-            <span>Kasb-hunar kollejlari reytinglari</span>
+            <span>Kasbiy ta'lim tashkilotlar reytingi</span>
           </NavLink>
         </li>
 
@@ -120,7 +120,7 @@ const AdminSideBar = () => {
             }
           >
             <GraduationCap size={20} />
-            <span>Kasb-hunar kollejlari</span>
+            <span>Kasbiy ta'lim tashkilotlar</span>
           </NavLink>
         </li>
       </ul>
