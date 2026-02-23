@@ -109,14 +109,14 @@ const FinanceEmploymentForm: React.FC<FinanceEmploymentFormProps> = ({
               disabled
             />
             <LabeledInputWithInfo
-              label="A1 – davlat xaridlari asosida mahsulot sotishdan olingan mablag‘"
+              label="A1 – ishlab chiqarilgan mahsulotlar (tovarlar, ish va xizmatlar)ni davlat xaridlari asosida sotishdan olingan mablagʻlar miqdori"
               type="number"
               step="any"
               {...register("a1")}
               error={errors.a1?.message}
             />
             <LabeledInputWithInfo
-              label="A2 – mahsulot sotish va ta’lim xizmatlaridan tushgan mablag‘"
+              label="A2 – ishlab chiqarilgan mahsulotlarni sotishdan va boshqa ta’lim xizmatlarini ko‘rsatishdan tushgan mablagʻlar miqdori"
               type="number"
               step="any"
               {...register("a2")}
@@ -130,28 +130,28 @@ const FinanceEmploymentForm: React.FC<FinanceEmploymentFormProps> = ({
               error={errors.o?.message}
             />
             <LabeledInputWithInfo
-              label="Oʻ7 – dual ta’limda tahsil olayotgan o‘quvchilar soni"
+              label="Oʻ2 – dual taʼlim shaklida tahsil olayotgan oʻquvchilar soni"
               type="number"
               step="any"
               {...register("o7")}
               error={errors.o7?.message}
             />
             <LabeledInputWithInfo
-              label="B1 – yakka tartibdagi tadbirkor yoki ta’sischi bo‘lgan bitiruvchilar"
+              label="B1 – yakka tartibdagi tadbirkor yoki ta’sischi sifatida faoliyat ko‘rsatayotgan bitiruvchilar soni"
               type="number"
               step="any"
               {...register("b1")}
               error={errors.b1?.message}
             />
             <LabeledInputWithInfo
-              label="B2 – davlat yoki xo‘jalik yurituvchi subyektda ishlayotgan bitiruvchilar"
+              label="B2 – davlat organi yoki xo‘jalik yurituvchi subyektda ishlayotgan bitiruvchilar soni"
               type="number"
               step="any"
               {...register("b2")}
               error={errors.b2?.message}
             />
             <LabeledInputWithInfo
-              label="B3 – keyingi bosqichda o‘qiyotgan yoki ijtimoiy band bo‘lgan bitiruvchilar"
+              label="B3 – ta’limning keyingi bosqichi bilan qamrab olingan, ikki yoshgacha bola parvarishi bilan band, 1-2 guruh nogironi, o‘zini o‘zi band qilgan bitiruvchilar soni"
               type="number"
               step="any"
               {...register("b3")}

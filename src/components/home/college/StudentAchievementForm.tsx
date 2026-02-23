@@ -100,63 +100,63 @@ const StudentAchievementForm: React.FC<StudentAchievementFormProps> = ({
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <LabeledInputWithInfo
-              label="Oʻ8 – “WorldSkills” g‘oliblari"
+              label="Oʻ3 – “WorldSkills” xalqaro chempionati g‘oliblari hisoblangan oʻquvchilar soni"
               type="number"
               step="any"
               {...register("o8")}
               error={errors.o8?.message}
             />
             <LabeledInputWithInfo
-              label="Oʻ9 – Respublika darajasidagi “Kasbiy mahorat” tanlovi g‘oliblari"
+              label="Oʻ4 – Oʻzbekiston Respublikasi Prezidenti sovrini uchun “Kasbiy mahorat milliy tanlovi”ning respublika darajasi g‘olibi hisoblangan o‘quvchilar soni"
               type="number"
               step="any"
               {...register("o9")}
               error={errors.o9?.message}
             />
             <LabeledInputWithInfo
-              label="Oʻ10 – Hududiy darajadagi “Kasbiy mahorat” g‘oliblari"
+              label="Oʻ5 – Oʻzbekiston Respublikasi Prezidenti sovrini uchun “Kasbiy mahorat milliy tanlovi”ning Qoraqalpogʻiston Respublikasi, viloyatlar va Toshkent shahri darajasi g‘oliblari hisoblangan oʻquvchilar soni"
               type="number"
               step="any"
               {...register("o10")}
               error={errors.o10?.message}
             />
             <LabeledInputWithInfo
-              label="Oʻ11 – boshqa xalqaro kasbiy tanlov g‘oliblari"
+              label="Oʻ6 – Kasbiy taʼlim agentligi tomonidan belgilangan tartibda tan olingan boshqa xalqaro darajadagi kasbiy tanlovlar"
               type="number"
               step="any"
               {...register("o11")}
               error={errors.o11?.message}
             />
             <LabeledInputWithInfo
-              label="Oʻ12 – nufuzli xalqaro olimpiada g‘oliblari"
+              label="Oʻ7 – belgilangan tartibda tasdiqlangan nufuzli xalqaro olimpiadalar g‘oliblari hisoblangan o‘quvchilar soni"
               type="number"
               step="any"
               {...register("o12")}
               error={errors.o12?.message}
             />
             <LabeledInputWithInfo
-              label="Oʻ13 – xalqaro/mintaqaviy olimpiada va respublika bosqichi g‘oliblari"
+              label="Oʻ8 – belgilangan tartibda tasdiqlangan xalqaro va mintaqaviy xalqaro olimpiadalar, shuningdek asosiy olimpiadalarning respublika bosqichi g‘oliblari hisoblangan o‘quvchilar soni"
               type="number"
               step="any"
               {...register("o13")}
               error={errors.o13?.message}
             />
             <LabeledInputWithInfo
-              label="Oʻ14 – boshqa xalqaro darajadagi tanlov g‘oliblari"
+              label="Oʻ9 – Kasbiy taʼlim agentligi tomonidan belgilangan tartibda tan olingan boshqa xalqaro darajadagi tanlovlar"
               type="number"
               step="any"
               {...register("o14")}
               error={errors.o14?.message}
             />
             <LabeledInputWithInfo
-              label="Oʻ13 – xalqaro sertifikatga ega o‘quvchilar"
+              label="O‘10 – xorijiy tilni bilish darajasi yoki umumta’lim fan bo‘yicha xalqaro sertifikatga (belgilangan tartibda tan olingan va oliy ta’lim tashkilotlariga kirishda imtiyoz beradigan darajada) ega o‘quvchilar soni"
               type="number"
               step="any"
               {...register("o13Cert")}
               error={errors.o13Cert?.message}
             />
             <LabeledInputWithInfo
-              label="Oʻ14 – milliy sertifikatga ega o‘quvchilar"
+              label="Oʻ11 – milliy sertifikatga ega o‘quvchilar"
               type="number"
               step="any"
               {...register("o14Cert")}

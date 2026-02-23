@@ -113,21 +113,21 @@ const EducationQualityForm: React.FC<EducationQualityFormProps> = ({
               disabled
             />
             <LabeledInputWithInfo
-              label="D1 – o‘quv rejalaridagi auditoriya yuklamalari (soatlar) miqdori"
+              label="D1 – mavjud kasb va mutaxassisliklarning oʻquv rejalaridagi auditoriya yuklamalari (soatlari) miqdori"
               type="number"
               step="any"
               {...register("d1")}
               error={errors.d1?.message}
             />
             <LabeledInputWithInfo
-              label="D2 – sababsiz qoldirilgan auditoriya soatlari"
+              label="D2 – sababsiz oʻtkazib yuborilgan auditoriya soatlari"
               type="number"
               step="any"
               {...register("d2")}
               error={errors.d2?.message}
             />
             <LabeledInputWithInfo
-              label="Q1…Qn – har bir kasb va mutaxassislik bo‘yicha qabul parametrining bajarilish ko‘rsatkichi"
+              label="Qn – tegishli kasb va mutaxassisliklar kesimida tasdiqlangan qabul parametrlarining bajarilishi (qabul parametrlari ortig‘i bilan bajarilgan taqdirda ushbu ko‘rsatkich 1 ga teng hisoblanadi)"
               type="number"
               step="any"
               {...register("qSum")}
@@ -141,21 +141,20 @@ const EducationQualityForm: React.FC<EducationQualityFormProps> = ({
               error={errors.n?.message}
             />
             <LabeledInputWithInfo
-              label="Oʻ5 – xalqaro yoki qo‘shma ta’lim dasturida tahsil olayotgan o‘quvchilar soni"
-              type="number"
+              label="Oʻ1 – xalqaro(1) va qoʻshma taʼlim dasturida tahsil olayotgan oʻquvchilar soni"
               step="any"
               {...register("o5")}
               error={errors.o5?.message}
             />
             <LabeledInputWithInfo
-              label="P18 – xalqaro va qo‘shma dasturlar soni"
+              label="P18 – xalqaro va qoʻshma dasturlar soni"
               type="number"
               step="any"
               {...register("p18")}
               error={errors.p18?.message}
             />
             <LabeledInputWithInfo
-              label="Pmax – eng ko‘p xalqaro dasturga ega ta’lim tashkilotidagi dasturlar soni"
+              label="Pmax – ta’lim tashkilotlari orasidagi eng ko‘p xalqaro va qoʻshma taʼlim dasturlarga ega bo‘lgan ta’lim tashkilotining shunday taʼlim dasturlari soni"
               type="number"
               step="any"
               {...register("pMax")}

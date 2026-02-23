@@ -5,7 +5,11 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { pedagogSchema, type CollegeData, type PedagogFormData } from "@/types/collegeDataEnitry";
+import {
+  pedagogSchema,
+  type CollegeData,
+  type PedagogFormData,
+} from "@/types/collegeDataEnitry";
 import LabeledInputWithInfo from "../LabeledInputWithInfo";
 import HeadingPanel from "../HeadingPanel";
 import { Button } from "@/components/ui/button";
@@ -115,126 +119,127 @@ const PedagogForm: React.FC<PedagogFormProps> = ({
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <LabeledInputWithInfo
-              label="P1 – ilmiy daraja (unvon)ga ega pedagoglar soni"
+              label="P1 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi ilmiy daraja (unvon)ga ega pedagoglar soni"
               type="number"
               step="any"
               {...register("p1")}
               error={errors.p1?.message}
             />
             <LabeledInputWithInfo
-              label="P2 – xorijiy davlat fuqarosi hisoblangan pedagoglar soni"
+              label="P2 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi xorijiy davlat fuqarosi hisoblangan pedagoglar soni"
               type="number"
               step="any"
               {...register("p2")}
               error={errors.p2?.message}
             />
             <LabeledInputWithInfo
-              label="P3 – “TOP-1000” xorijiy OTM diplomiga ega pedagoglar soni"
+              label="P3 – “TOP-1 000” xorijiy oliy taʼlim tashkiloti diplomiga ega boʻlgan pedagoglar soni"
               type="number"
               step="any"
               {...register("p3")}
               error={errors.p3?.message}
             />
             <LabeledInputWithInfo
-              label="P4 – bosh o‘qituvchi pedagoglar soni"
+              label="P4 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi bosh oʻqituvchi pedagoglar soni"
               type="number"
               step="any"
               {...register("p4")}
               error={errors.p4?.message}
             />
             <LabeledInputWithInfo
-              label="P5 – yetakchi o‘qituvchi pedagoglar va 1-2 toifali ishlab chiqarish ta’lim ustalari soni"
+              label="P5 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi yetakchi oʻqituvchi pedagoglar va kasbiy sertifikatga ega (1-, 2-toifali) ishlab chiqarish taʼlim ustalari soni"
               type="number"
               step="any"
               {...register("p5")}
               error={errors.p5?.message}
             />
             <LabeledInputWithInfo
-              label="P6 – katta o‘qituvchi pedagoglar soni"
+              label="P6 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi katta oʻqituvchi pedagoglar soni"
               type="number"
               step="any"
               {...register("p6")}
               error={errors.p6?.message}
             />
             <LabeledInputWithInfo
-              label="P7 – respublika hududida malaka oshirgan ishlab chiqarish ta’lim ustalari soni"
+              label="P7 – respublika hududida belgilangan tartibda malaka oshirgan asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi ishlab chiqarish taʼlimi ustalari soni"
               type="number"
               step="any"
               {...register("p7")}
               error={errors.p7?.message}
             />
             <LabeledInputWithInfo
-              label="P8 – respublika hududida malaka oshirish va stajirovkada qatnashgan umumta’lim, umumkasbiy va maxsus fan pedagoglari soni"
+              label="P8 – respublika hududida belgilangan tartibda malaka oshirish
+va stajirovka dasturlarida muvaffaqiyatli ishtirok etgan asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi umumtaʼlim, umumkasbiy va maxsus fanlar pedagoglari soni"
               type="number"
               step="any"
               {...register("p8")}
               error={errors.p8?.message}
             />
             <LabeledInputWithInfo
-              label="P9 – xorijda malaka oshirish yoki stajirovkada qatnashgan pedagoglar soni"
+              label="P9 – xorijiy malaka oshirish va stajirovka dasturlarida oflayn tartibda ishtirok etgan asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi pedagoglar soni"
               type="number"
               step="any"
               {...register("p9")}
               error={errors.p9?.message}
             />
             <LabeledInputWithInfo
-              label="P10 – xorijga malaka oshirish uchun yuborilgan ishlab chiqarish ta’lim ustalari soni"
+              label="P10– malaka oshirish yoki tajriba almashish uchun xorijga yuborilgan asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi ishlab chiqarish taʼlimi ustalari soni"
               type="number"
               step="any"
               {...register("p10")}
               error={errors.p10?.message}
             />
             <LabeledInputWithInfo
-              label="P11 – xorijga yuborilgan maxsus fan pedagoglari soni"
+              label="P11 – malaka oshirish yoki tajriba almashish uchun xorijga yuborilgan asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi maxsus fanlar pedagoglari soni"
               type="number"
               step="any"
               {...register("p11")}
               error={errors.p11?.message}
             />
             <LabeledInputWithInfo
-              label="P12 – xorijga yuborilgan umumta’lim fan pedagoglari soni"
+              label="P12 – malaka oshirish yoki tajriba almashish uchun xorijga yuborilgan asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi umumtaʼlim fanlar pedagoglari soni"
               type="number"
               step="any"
               {...register("p12")}
               error={errors.p12?.message}
             />
             <LabeledInputWithInfo
-              label="P13 – xalqaro sertifikatga ega pedagoglar soni"
+              label="P13 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi xorijiy tilni bilish darajasi yoki umumta’lim fan bo‘yicha xalqaro sertifikatga (belgilangan tartibda tan olingan va ustamalar qo‘llaniladigan darajada) ega pedagoglar soni"
               type="number"
               step="any"
               {...register("p13")}
               error={errors.p13?.message}
             />
             <LabeledInputWithInfo
-              label="P14 – milliy sertifikatga ega pedagoglar soni"
+              label="P14 – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi xorijiy tilni bilish darajasi yoki umumta’lim fan bo‘yicha milliy sertifikatga (belgilangan tartibda tan olingan va ustamalar qo‘llaniladigan darajada) ega pedagoglar soni"
               type="number"
               step="any"
               {...register("p14")}
               error={errors.p14?.message}
             />
             <LabeledInputWithInfo
-              label="P15 – tashqi o‘rindosh sifatida jalb qilingan soha mutaxassislari soni"
+              label="P15 – ishlab chiqarish taʼlim ustasi yoki maxsus fan o‘qituvchisi tariqasida tashqi o‘rindosh sifatida mehnat faoliyatini olib boruvchi soha mutaxassislari soni"
               type="number"
               step="any"
               {...register("p15")}
               error={errors.p15?.message}
             />
             <LabeledInputWithInfo
-              label="P16 – tashqi o‘rindosh xorijiy pedagoglar soni"
+              label="P16 – xorijiy davlat fuqarosi hisoblangan tashqi o‘rindosh sifatida mehnat faoliyatini olib boruvchi pedagoglar soni"
               type="number"
               step="any"
               {...register("p16")}
               error={errors.p16?.message}
             />
             <LabeledInputWithInfo
-              label="P17 – tashqi o‘rindosh OTM professor-o‘qituvchilari soni"
+              label="P17 – tashqi o‘rindosh sifatida mehnat faoliyatini olib boruvchi oliy ta’lim tashkilotlari professor-o‘qituvchilari soni"
               type="number"
               step="any"
               {...register("p17")}
               error={errors.p17?.message}
             />
             <LabeledInputWithInfo
-              label="P – asosiy shtat va ichki o‘rindosh sifatida mehnat faoliyatini olib boruvchi pedagoglar soni"
+              label="P – asosiy shtat va ichki oʻrindosh sifatida mehnat faoliyatini olib boruvchi pedagoglar soni"
               type="number"
               step="any"
               {...register("p")}
