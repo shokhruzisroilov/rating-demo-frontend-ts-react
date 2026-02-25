@@ -43,7 +43,9 @@ export function UniversityTypeChart({
 
   // type propni ishlatish
   const chartTitle =
-    type === "university" ? title : "Kollejlar Turi Bo'yicha Taqsimot";
+    type === "university"
+      ? title
+      : "Kasbiy ta'lim tashkilotlar Turi Bo'yicha Taqsimot";
 
   return (
     <Card className="col-span-1">

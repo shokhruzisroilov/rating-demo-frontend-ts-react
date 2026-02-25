@@ -5,6 +5,7 @@ import { ActivePeriodCard } from "@/components/dashboard/ActivePeriodCard";
 import { DataCompletionChart } from "@/components/dashboard/DataCompletionChart";
 import { RegionDistributionChart } from "@/components/dashboard/RegionDistributionChart";
 import { StatCards } from "@/components/dashboard/StatCards";
+import { TopCollegesTable } from "@/components/dashboard/TopCollegesTable";
 import { TopUniversitiesTable } from "@/components/dashboard/TopUniversitiesTable";
 import { UniversityTypeChart } from "@/components/dashboard/UniversityTypeChart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -58,7 +59,7 @@ export default function DashboardPage() {
         />
         <UniversityTypeChart
           data={data.collegeTypeDistribution}
-          title="Kollejlar Turi Bo'yicha Taqsimot"
+          title="Kasbiy ta'lim tashkilotlar Turi Bo'yicha Taqsimot"
           type="college"
         />
       </div>
@@ -70,7 +71,7 @@ export default function DashboardPage() {
         />
         <RegionDistributionChart
           data={data.collegeRegionDistribution}
-          title="Kollejlar Hududlar Bo'yicha Taqsimot"
+          title="Kasbiy ta'lim tashkilotlar Hududlar Bo'yicha Taqsimot"
         />
       </div>
 
@@ -97,7 +98,7 @@ export default function DashboardPage() {
                 </span>
               </div>
               <div className="flex justify-between">
-                <span>Faol Kollejlar:</span>
+                <span>Faol Kasbiy ta'lim tashkilotlar:</span>
                 <span className="font-bold">
                   {data.generalStatistics.activeColleges}
                 </span>
@@ -122,7 +123,9 @@ export default function DashboardPage() {
                 </div>
               </div>
               <div className="pt-2 border-t">
-                <h4 className="font-semibold mb-2">Kollejlar statistikasi</h4>
+                <h4 className="font-semibold mb-2">
+                  Kasbiy ta'lim tashkilotlar statistikasi
+                </h4>
                 <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span>Davlat:</span>
@@ -140,6 +143,7 @@ export default function DashboardPage() {
       </div>
 
       <TopUniversitiesTable data={data.topUniversities} />
+      <TopCollegesTable data={data.topColleges} />
     </div>
   );
 }

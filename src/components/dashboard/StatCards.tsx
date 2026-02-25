@@ -23,7 +23,7 @@ export function StatCards({ data }: StatCardsProps) {
       color: "bg-blue-500",
     },
     {
-      title: "Jami Kollejlar",
+      title: "Jami Kasbiy ta'lim tashkilotlar",
       value: data.generalStatistics.totalColleges,
       icon: School,
       description: `${data.generalStatistics.activeColleges} faol, ${data.generalStatistics.inactiveColleges} nofaol`,
@@ -54,7 +54,7 @@ export function StatCards({ data }: StatCardsProps) {
       color: "bg-red-500",
     },
     {
-      title: "Kollejlar (turi)",
+      title: "Kasbiy ta'lim tashkilotlar (turi)",
       value:
         data.generalStatistics.stateColleges +
         data.generalStatistics.privateColleges,

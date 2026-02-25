@@ -7,6 +7,7 @@ export interface DashboardResponse {
   regionDistribution: Record<string, number>;
   activePeriod: ActivePeriod;
   topUniversities: TopUniversity[];
+  topColleges: TopColleges[];
   dataEntryStatus: DataEntryStatus;
   averageIndicators: Record<string, number>;
 
@@ -50,6 +51,18 @@ export interface TopUniversity {
   universityName: string;
   universityCode: string;
   universityType: string;
+  region: string;
+  compositeScore: number;
+  previousScore: number;
+  rankChange: number;
+}
+
+export interface TopColleges {
+  rank: number;
+  collegeId: number;
+  collegeName: string;
+  collegeCode: string;
+  collegeType: string;
   region: string;
   compositeScore: number;
   previousScore: number;
