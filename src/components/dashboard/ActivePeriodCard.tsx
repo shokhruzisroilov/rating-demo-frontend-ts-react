@@ -1,18 +1,17 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Calendar, CheckCircle, XCircle } from 'lucide-react'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Calendar, CheckCircle, XCircle } from "lucide-react";
 
 interface ActivePeriodCardProps {
-	data: any
+  data: any;
 }
 
 export function ActivePeriodCard({ data }: ActivePeriodCardProps) {
-
-	return (
+  return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Calendar className="h-5 w-5" />
-          Faol Reyting Davri (Universitetlar)
+          Faol Reyting Davri
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
