@@ -1,32 +1,45 @@
-import { useAuthStore } from '@/store/authStore'
-import axios from 'axios'
+import { useAuthStore } from "@/store/authStore";
+import axios from "axios";
 
 const api = axios.create({
-	baseURL: import.meta.env.VITE_BASE_API_URL,
-})
+  baseURL: import.meta.env.VITE_BASE_API_URL,
+});
 
 // Request interceptor
-api.interceptors.request.use(config => {
-	const token = useAuthStore.getState().accessToken
-	if (token) config.headers.Authorization = `Bearer ${token}`
-	return config
-})
+api.interceptors.request.use((config) => {
+  const token = useAuthStore.getState().accessToken;
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 
 // Response interceptor
 api.interceptors.response.use(
-	response => response,
-	async error => {
-		const originalRequest = error.config
-		if (error.response?.status === 401 && !originalRequest._retry) {
-			originalRequest._retry = true
-			const newToken = await useAuthStore.getState().refreshTokenFunc()
-			if (newToken) {
-				originalRequest.headers.Authorization = `Bearer ${newToken}`
-				return axios(originalRequest)
-			}
-		}
-		return Promise.reject(error)
-	},
-)
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+    const { logout, refreshTokenFunc } = useAuthStore.getState();
 
-export default api
+    // 401 -> token refresh
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      const newToken = await refreshTokenFunc();
+
+      if (newToken) {
+        originalRequest.headers.Authorization = `Bearer ${newToken}`;
+        return axios(originalRequest);
+      }
+
+      // refresh ham ishlamasa logout
+      logout();
+    }
+
+    // 403 -> darhol logout
+    if (error.response?.status === 403) {
+      logout();
+    }
+
+    return Promise.reject(error);
+  },
+);
+
+export default api;
